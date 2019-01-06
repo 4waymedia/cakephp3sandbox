@@ -1,0 +1,761 @@
+2019-01-01 07:34:24 Error: Fatal Error (1): Class 'IntlDateFormatter' not found in [/Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Type/DateTimeType.php, line 375]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 229
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2019-01-01 07:34:24 Error: [Cake\Error\FatalErrorException] Class 'IntlDateFormatter' not found in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Type/DateTimeType.php on line 375
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(110): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Class 'IntlDate...', '/Applications/M...', 375)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2019-01-01 07:36:06 Error: Fatal Error (1): Class 'IntlDateFormatter' not found in [/Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Type/DateTimeType.php, line 375]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 229
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2019-01-01 07:36:06 Error: [Cake\Error\FatalErrorException] Class 'IntlDateFormatter' not found in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Type/DateTimeType.php on line 375
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(110): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Class 'IntlDate...', '/Applications/M...', 375)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2019-01-02 06:08:53 Error: [RuntimeException] Unknown command `cake model`. Run `cake --help` to get the list of valid commands. in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 321
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(159): Cake\Console\CommandRunner->resolveName(Object(Cake\Console\CommandCollection), Object(Cake\Console\ConsoleIo), 'model')
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#2 {main}
+
+
+2019-01-02 06:09:03 Error: [PDOException] SQLSTATE[HY000] [2002] No such file or directory in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=loca...', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=loca...', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'users', 'Users')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Users')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('users')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:09:37 Error: [PDOException] SQLSTATE[HY000] [2002] No such file or directory in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=loca...', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=loca...', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1018): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(94): Bake\Shell\Task\ModelTask->listUnskipped()
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main()
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-01-02 06:09:41 Error: [PDOException] SQLSTATE[HY000] [2002] No such file or directory in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=loca...', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=loca...', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'user', 'User')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('User')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('user')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:09:43 Error: [PDOException] SQLSTATE[HY000] [2002] No such file or directory in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=loca...', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=loca...', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'users', 'Users')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Users')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('users')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:13:00 Error: [PDOException] SQLSTATE[HY000] [2002] Connection refused in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'users', 'Users')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Users')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('users')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:15:33 Error: [PDOException] SQLSTATE[HY000] [2002] Connection refused in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'users', 'Users')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Users')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('users')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:19:03 Error: [PDOException] SQLSTATE[HY000] [2002] Connection refused in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'users', 'Users')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Users')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('users')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:19:22 Error: [PDOException] SQLSTATE[HY000] [2002] Connection refused in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1018): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/BakeShell.php(252): Bake\Shell\Task\ModelTask->listUnskipped()
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(518): Bake\Shell\BakeShell->all()
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#15 {main}
+
+
+2019-01-02 06:20:13 Error: [PDOException] SQLSTATE[HY000] [2002] Connection refused in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'users', 'Users')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Users')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('users')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:23:00 Error: [PDOException] SQLSTATE[HY000] [2002] Connection refused in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'users', 'Users')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Users')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('users')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:26:35 Error: [PDOException] SQLSTATE[HY000] [2002] No such file or directory in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:unix_sock...', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:unix_sock...', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'users', 'Users')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Users')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('users')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:26:43 Error: [PDOException] SQLSTATE[HY000] [2002] Connection refused in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'users', 'Users')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Users')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('users')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:26:56 Error: [PDOException] SQLSTATE[HY000] [2002] Connection refused in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'users', 'Users')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Users')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('users')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:27:10 Error: [PDOException] SQLSTATE[HY000] [2002] Connection refused in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1018): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(94): Bake\Shell\Task\ModelTask->listUnskipped()
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main()
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-01-02 06:27:37 Error: [Cake\Datasource\Exception\MissingDatasourceConfigException] The datasource configuration "cli" was not found. in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Datasource/ConnectionManager.php on line 196
+Exception Attributes: array (
+  'name' => 'cli',
+)
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1043): Cake\Datasource\ConnectionManager::get('cli')
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1018): Bake\Shell\Task\ModelTask->listAll()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/TemplateTask.php(118): Bake\Shell\Task\ModelTask->listUnskipped()
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\TemplateTask->main()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#9 {main}
+
+
+2019-01-02 06:27:44 Error: [PDOException] SQLSTATE[HY000] [2002] Connection refused in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1018): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/TemplateTask.php(118): Bake\Shell\Task\ModelTask->listUnskipped()
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\TemplateTask->main()
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-01-02 06:27:58 Error: [PDOException] SQLSTATE[HY000] [2002] Connection refused in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1018): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/TemplateTask.php(118): Bake\Shell\Task\ModelTask->listUnskipped()
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\TemplateTask->main()
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-01-02 06:28:02 Error: [Cake\Datasource\Exception\MissingDatasourceConfigException] The datasource configuration "cli" was not found. in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Datasource/ConnectionManager.php on line 196
+Exception Attributes: array (
+  'name' => 'cli',
+)
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1043): Cake\Datasource\ConnectionManager::get('cli')
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1018): Bake\Shell\Task\ModelTask->listAll()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/TemplateTask.php(118): Bake\Shell\Task\ModelTask->listUnskipped()
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\TemplateTask->main()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#9 {main}
+
+
+2019-01-02 06:30:24 Error: [PDOException] SQLSTATE[HY000] [2002] Can't assign requested address in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=loca...', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=loca...', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1018): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/TemplateTask.php(118): Bake\Shell\Task\ModelTask->listUnskipped()
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\TemplateTask->main()
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-01-02 06:30:45 Error: [PDOException] SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=/App...', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=/App...', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1018): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/TemplateTask.php(118): Bake\Shell\Task\ModelTask->listUnskipped()
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\TemplateTask->main()
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-01-02 06:31:40 Error: [PDOException] SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=/App...', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=/App...', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1018): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/TemplateTask.php(118): Bake\Shell\Task\ModelTask->listUnskipped()
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\TemplateTask->main()
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-01-02 06:31:46 Error: [PDOException] SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=/App...', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=/App...', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1018): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/TemplateTask.php(118): Bake\Shell\Task\ModelTask->listUnskipped()
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\TemplateTask->main()
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-01-02 06:31:54 Error: [PDOException] SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=/App...', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=/App...', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'users', 'Users')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Users')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('users')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:33:44 Error: [PDOException] SQLSTATE[HY000] [2002] Can't assign requested address in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'users', 'Users')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Users')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('users')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:35:14 Error: [PDOException] SQLSTATE[HY000] [2002] Can't assign requested address in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'users', 'Users')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Users')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('users')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:35:32 Error: [PDOException] SQLSTATE[HY000] [2002] Can't assign requested address in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'users', 'Users')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Users')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('users')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:40:47 Error: [PDOException] SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=/App...', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=/App...', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'users', 'Users')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Users')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('users')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:41:00 Error: [PDOException] SQLSTATE[HY000] [2002] Connection refused in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'users', 'Users')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Users')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('users')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:41:03 Error: [PDOException] SQLSTATE[HY000] [2002] Connection refused in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1018): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(94): Bake\Shell\Task\ModelTask->listUnskipped()
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main()
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-01-02 06:41:37 Error: [PDOException] SQLSTATE[HY000] [2002] Connection refused in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1018): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(94): Bake\Shell\Task\ModelTask->listUnskipped()
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main()
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-01-02 06:41:59 Error: [PDOException] SQLSTATE[HY000] [2002] Connection refused in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'tags', 'Tags')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Tags')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('tags')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-01-02 06:42:34 Error: [PDOException] SQLSTATE[HY000] [2002] Connection refused in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/ORM/Table.php(547): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/ORM/Table.php(673): Cake\ORM\Table->getSchema()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/TemplateTask.php(288): Cake\ORM\Table->getPrimaryKey()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/TemplateTask.php(142): Bake\Shell\Task\TemplateTask->_loadController()
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\TemplateTask->main('users')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-01-02 06:43:04 Error: [PDOException] SQLSTATE[HY000] [2002] Connection refused in /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php on line 92
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver.php(92): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=127....', Array)
+#2 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1049): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1003): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'tags', 'Tags')
+#12 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Tags')
+#13 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/BakeShell.php(273): Bake\Shell\Task\ModelTask->main('Tags')
+#14 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Collection/CollectionTrait.php(51): Bake\Shell\BakeShell->Bake\Shell\{closure}('Tags', 0)
+#15 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/bake/src/Shell/BakeShell.php(274): Cake\Collection\Collection->each(Object(Closure))
+#16 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/Shell.php(518): Bake\Shell\BakeShell->all('tags')
+#17 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#18 /Applications/MAMP/htdocs/cakephp-3-6-12/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#19 /Applications/MAMP/htdocs/cakephp-3-6-12/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#20 {main}
+
+
