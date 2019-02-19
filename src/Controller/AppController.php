@@ -78,7 +78,7 @@ class AppController extends Controller
         $this->loadComponent('Security');
     }
 
-    public function isAuthorized($user = null)
+    public function isAuthorized($user = NULL)
     {
 
         // Only admins can access admin functions

@@ -11,8 +11,6 @@
         <li><?php echo $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
         <li><?php echo $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
         <li><?php echo $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
-        <li><?php echo $this->Html->link(__('List Articles'), ['controller' => 'Articles', 'action' => 'index']) ?> </li>
-        <li><?php echo $this->Html->link(__('New Article'), ['controller' => 'Articles', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="users view large-9 medium-8 columns content">
