@@ -18,39 +18,39 @@
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Date') ?></th>
-            <td><?= h($payment->Date) ?></td>
+            <td><?= h($payment->date) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Transaction Type') ?></th>
-            <td><?= h($payment->Transaction_type) ?></td>
+            <td><?= h($payment->transaction_type) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Order ID') ?></th>
-            <td><?= h($payment->Order_ID) ?></td>
+            <td><?= h($payment->order_id) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Product Details') ?></th>
-            <td><?= h($payment->Product_Details) ?></td>
+            <td><?= h($payment->product_details) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Total Product Charges') ?></th>
-            <td><?= h($payment->Total_product_charges) ?></td>
+            <td><?= h($payment->total_product_charges) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Total Promotional Rebates') ?></th>
-            <td><?= h($payment->Total_promotional_rebates) ?></td>
+            <td><?= h($payment->total_promotional_rebates) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Amazon Fees') ?></th>
-            <td><?= h($payment->Amazon_fees) ?></td>
+            <td><?= h($payment->amazon_fees) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Other') ?></th>
-            <td><?= h($payment->Other) ?></td>
+            <td><?= h($payment->other) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Total') ?></th>
-            <td><?= h($payment->Total) ?></td>
+            <td><?= h($payment->total) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>

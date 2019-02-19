@@ -104,4 +104,17 @@ class PaymentsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function generate(){
+        $records = $this->Payments->find('all')->contain('Payments', function (Query $q) {
+            return $q
+                ->select(['body', 'author_id'])
+                ->where(['Comments.approved' => true]);
+        });
+
+        debug($records);
+
+        $this->set(compact('records'));
+    }
+
 }

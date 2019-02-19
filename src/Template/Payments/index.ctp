@@ -4,21 +4,22 @@
  * @var \App\Model\Entity\Payment[]|\Cake\Collection\CollectionInterface $payments
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
+<nav class="large-2 medium-3 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
+        <li><?= $this->Html->link(__('Import'), ['controller'=>'content','action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Payment'), ['action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="payments index large-9 medium-8 columns content">
+<div class="payments index large-10 medium-9 columns content">
     <h3><?= __('Payments') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+
                 <th scope="col"><?= $this->Paginator->sort('Date') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Transaction_type') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Order_ID') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('Order_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Product_Details') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Total_product_charges') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Total_promotional_rebates') ?></th>
@@ -31,16 +32,16 @@
         <tbody>
             <?php foreach ($payments as $payment): ?>
             <tr>
-                <td><?= $this->Number->format($payment->id) ?></td>
-                <td><?= h($payment->Date) ?></td>
-                <td><?= h($payment->Transaction_type) ?></td>
-                <td><?= h($payment->Order_ID) ?></td>
-                <td><?= h($payment->Product_Details) ?></td>
-                <td><?= h($payment->Total_product_charges) ?></td>
-                <td><?= h($payment->Total_promotional_rebates) ?></td>
-                <td><?= h($payment->Amazon_fees) ?></td>
-                <td><?= h($payment->Other) ?></td>
-                <td><?= h($payment->Total) ?></td>
+
+                <td><?= h($payment->date) ?></td>
+                <td><?= h($payment->transaction_type) ?></td>
+                <td><?= h($payment->order_id) ?></td>
+                <td><?= h($payment->product_Details) ?></td>
+                <td><?= h($payment->total_product_charges) ?></td>
+                <td><?= h($payment->total_promotional_rebates) ?></td>
+                <td><?= h($payment->amazon_fees) ?></td>
+                <td><?= h($payment->other) ?></td>
+                <td><?= h($payment->total) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $payment->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $payment->id]) ?>

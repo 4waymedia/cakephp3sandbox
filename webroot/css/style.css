@@ -32,9 +32,16 @@ header {
 header .header-title {
     padding-left:80px
 }
-
+.top-bar, .top-bar ul {
+    background-color: #174e2c;
+}
 legend {
     color:#15848F;
+}
+
+.submenu {
+    left:0;
+    top:45px;
 }
 
 .row {
@@ -139,6 +146,10 @@ ul.pagination .disabled:hover a {
 .required > label:after {
     content: ' *';
     color: #C3232D;
+}
+
+.date select{
+    min-width:70px !important;
 }
 
 select[multiple] {
@@ -320,6 +331,7 @@ pre {
 
 .top-bar.expanded .title-area {
     background: #01545b;
+
 }
 
 .top-bar.expanded, .top-bar,.top-bar-section ul li,.top-bar-section li:not(.has-form) a:not(.button) {
@@ -406,7 +418,7 @@ fieldset legend {
 }
 
 button {
-    background: #966600;
+
 }
 
 div.message {
@@ -521,4 +533,15 @@ div.message.hidden {
 table td {
     vertical-align: top;
     word-break: break-all;
+}
+
+.datetime select,
+.time select,
+.date select{
+    padding-right:20px;
+    min-width:75px;
+}
+
+footer{
+    min-height:100px;
 }

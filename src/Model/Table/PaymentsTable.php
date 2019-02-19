@@ -36,6 +36,24 @@ class PaymentsTable extends Table
         $this->setPrimaryKey('id');
     }
 
+    protected $_accessible = [
+        '*' => false,
+    ];
+
+    public function beforeSave($event, $entity, $options) {
+
+        if(isset($entity->total_product_charges)){
+            // Create Total amount
+            $entity->total = (
+                trim($entity->total_product_charges, '$')+
+                trim($entity->amazon_fees, '$')+
+                trim($entity->refund_admin_fee, '$')+
+                trim($entity->refund_referral_fee, '$')+
+                trim($entity->refund_product_charge, '$')
+            );
+        }
+    }
+
     /**
      * Default validation rules.
      *
@@ -49,50 +67,49 @@ class PaymentsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->scalar('Date')
-            ->maxLength('Date', 254)
-            ->allowEmpty('Date');
+            ->scalar('date')
+            ->maxLength('date', 254)
+            ->allowEmpty('date');
 
         $validator
-            ->scalar('Transaction_type')
-            ->maxLength('Transaction_type', 254)
-            ->allowEmpty('Transaction_type');
+            ->scalar('transaction_type')
+            ->maxLength('transaction_type', 254)
+            ->allowEmpty('transaction_type');
 
         $validator
-            ->scalar('Order_ID')
-            ->maxLength('Order_ID', 254)
-            ->allowEmpty('Order_ID');
+            ->scalar('order_id')
+            ->maxLength('order_id', 254)
+            ->allowEmpty('order_id');
+
+
 
         $validator
-            ->scalar('Product_Details')
-            ->maxLength('Product_Details', 254)
-            ->allowEmpty('Product_Details');
+            ->scalar('total_product_charges')
+            ->maxLength('total_product_charges', 254)
+            ->allowEmpty('total_product_charges');
 
         $validator
-            ->scalar('Total_product_charges')
-            ->maxLength('Total_product_charges', 254)
-            ->allowEmpty('Total_product_charges');
+            ->scalar('total_promotional_rebates')
+            ->maxLength('total_promotional_rebates', 254)
+            ->allowEmpty('total_promotional_rebates');
 
         $validator
-            ->scalar('Total_promotional_rebates')
-            ->maxLength('Total_promotional_rebates', 254)
-            ->allowEmpty('Total_promotional_rebates');
-
-        $validator
-            ->scalar('Amazon_fees')
+            ->scalar('amazon_fees')
             ->maxLength('Amazon_fees', 254)
             ->allowEmpty('Amazon_fees');
 
         $validator
-            ->scalar('Other')
-            ->maxLength('Other', 254)
-            ->allowEmpty('Other');
+            ->scalar('other')
+            ->maxLength('other', 254)
+            ->allowEmpty('other');
 
         $validator
-            ->scalar('Total')
-            ->maxLength('Total', 254)
-            ->allowEmpty('Total');
+            ->scalar('total')
+            ->maxLength('total', 254)
+            ->allowEmpty('total');
 
         return $validator;
     }
+
+
 }

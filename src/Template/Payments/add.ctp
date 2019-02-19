@@ -15,15 +15,15 @@
     <fieldset>
         <legend><?= __('Add Payment') ?></legend>
         <?php
-            echo $this->Form->control('Date');
-            echo $this->Form->control('Transaction_type');
-            echo $this->Form->control('Order_ID');
-            echo $this->Form->control('Product_Details');
-            echo $this->Form->control('Total_product_charges');
-            echo $this->Form->control('Total_promotional_rebates');
-            echo $this->Form->control('Amazon_fees');
-            echo $this->Form->control('Other');
-            echo $this->Form->control('Total');
+            echo $this->Form->control('date');
+            echo $this->Form->control('transaction_type');
+            echo $this->Form->control('order_id');
+            echo $this->Form->control('product_Details');
+            echo $this->Form->control('total_product_charges');
+            echo $this->Form->control('total_promotional_rebates');
+            echo $this->Form->control('amazon_fees');
+            echo $this->Form->control('other');
+            echo $this->Form->control('total');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

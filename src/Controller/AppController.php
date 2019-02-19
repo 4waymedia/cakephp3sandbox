@@ -69,7 +69,7 @@ class AppController extends Controller
 
         // Allow the display action so our PagesController
         // continues to work. Also enable the read only actions.
-        $this->Auth->allow(['display', 'view', 'index']);
+        //$this->Auth->allow(['display', 'view', 'index']);
 
         /*
          * Enable the following component for recommended CakePHP security settings.
@@ -78,11 +78,23 @@ class AppController extends Controller
         $this->loadComponent('Security');
     }
 
-    public function isAuthorized($user)
+    public function isAuthorized($user = null)
     {
-        if ($this->Auth->user()) {
+
+        // Only admins can access admin functions
+        // prefix is NOT capitalized
+        if ($this->request->getParam('prefix') === 'admin') {
+            return (bool)($user['role'] === 'admin');
+        }
+
+        // Roles start with Capital letter
+        if (isset($user['role']) && $user['role'] === 'Admin') {
             return true;
         }
-        return false;
+
+
+
+        return true;
+
     }
 }
