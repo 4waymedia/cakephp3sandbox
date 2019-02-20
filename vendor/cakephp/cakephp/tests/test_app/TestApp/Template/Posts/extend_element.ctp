@@ -1,3 +1,3 @@
 <?php $this->extend('parent_view'); ?>
 View content.
-<?= $this->element('extended_element'); ?>
+<?php echo  $this->element('extended_element'); ?>

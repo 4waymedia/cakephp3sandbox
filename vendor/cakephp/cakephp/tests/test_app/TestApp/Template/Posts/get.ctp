@@ -1,1 +1,1 @@
-<?= $this->cell('Articles::doEcho', ['cell', 'content']); ?>
+<?php echo  $this->cell('Articles::doEcho', ['cell', 'content']); ?>

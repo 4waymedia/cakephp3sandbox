@@ -13,14 +13,14 @@
 <nav class="large-2 medium-3 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Importer'), ['controller'=>'Content','action' => 'index']) ?></li>
+        <li><?php echo $this->Html->link(__('Importer'), ['controller'=>'Content','action' => 'index']) ?></li>
         <li><a href="/accountPayments/">Expense Payments</a></li>
         <li><a href="/roles/">Roles</a></li>
         <li><a href="/users/">Users</a></li>
     </ul>
 </nav>
 <div class="tlhtJobs index large-10 medium-9 columns content">
-    <h3><?= __('Tlht Dashboard') ?></h3>
+    <h3><?php echo __('Tlht Dashboard') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
         <tr>
@@ -43,7 +43,7 @@
                 <td><?php echo explode('-', $job->technician)[0]; ?></td>
                 <td><?php echo $job->service_order_id; ?></td>
                 <td>
-                    <? if(!empty($job['payments'])){?>
+                    <?php if(!empty($job['payments'])){?>
 
                             <?php foreach($job['payments'] as $payment):
                             $profit += str_replace('$', '', $payment->total);
@@ -54,7 +54,7 @@
                     <?php } ?>
                 </td>
                 <td>
-                    <? if(!empty($job['account_payments'])) {
+                    <?php if(!empty($job['account_payments'])) {
                         $payments_total = 0;
                         foreach ($job['account_payments'] as $payment):
                             $payments_total += $payment->amount;
@@ -79,12 +79,12 @@
 
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
+            <?php echo $this->Paginator->first('<< ' . __('first')) ?>
+            <?php echo $this->Paginator->prev('< ' . __('previous')) ?>
+            <?php echo $this->Paginator->numbers() ?>
+            <?php echo $this->Paginator->next(__('next') . ' >') ?>
+            <?php echo $this->Paginator->last(__('last') . ' >>') ?>
         </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+        <p><?php echo $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
 

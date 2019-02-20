@@ -80,8 +80,11 @@ class ContentComponent extends Component
             $id = isset($data[$model]['id']) ? $data[$model]['id'] : false;
             $theTable = TableRegistry::getTableLocator()->get($model);
 
-            // Adjust amounts based on Payment Type
-            $data = $this->sanitizePaymentData($data);
+            if($model == 'Payments'){
+                // Adjust amounts based on Payment Type
+                $data = $this->sanitizePaymentData($data);
+            }
+
 
             if( $id && $theTable->exists(['id' => $id]) ){
 
@@ -124,7 +127,7 @@ class ContentComponent extends Component
     public function sanitizePaymentData($data)
     {
         // Handle Refund Data
-        if($data['transaction_type'] == 'Refund'){
+        if(isset($data['transaction_type']) && $data['transaction_type'] == 'Refund'){
             // Check Admin Fee
             if($data['payment_detail'] == 'Referral Fee on Item Price'){
                 $refund_field = 'refund_referral_fee';

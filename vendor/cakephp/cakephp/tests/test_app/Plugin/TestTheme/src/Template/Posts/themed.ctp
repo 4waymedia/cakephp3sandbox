@@ -1,2 +1,2 @@
 posts themed themed file.
-<?= $this->element('test_element'); ?>
+<?php echo  $this->element('test_element'); ?>

@@ -1,2 +1,2 @@
 Parent View.
-<?= $this->fetch('content') ?>
+<?php echo  $this->fetch('content') ?>
