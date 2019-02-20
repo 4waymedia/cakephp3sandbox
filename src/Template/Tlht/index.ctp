@@ -43,7 +43,7 @@
                 <td><?php echo explode('-', $job->technician)[0]; ?></td>
                 <td><?php echo $job->service_order_id; ?></td>
                 <td>
-                    <? if(!empty($job['payments'])):?>
+                    <? if(!empty($job['payments'])){?>
 
                             <?php foreach($job['payments'] as $payment):
                             $profit += str_replace('$', '', $payment->total);
@@ -51,7 +51,7 @@
                             ?>
                             <div><?php echo $payment->total;?></div>
                             <?php endforeach; ?>
-                    <?php endif; ?>
+                    <?php } ?>
                 </td>
                 <td>
                     <? if(!empty($job['account_payments'])) {
@@ -88,4 +88,3 @@
         <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
 
-</div>
