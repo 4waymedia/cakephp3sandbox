@@ -4,6 +4,7 @@ namespace App\Model\Table;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
 
 /**
@@ -40,6 +41,21 @@ class JobsTable extends Table
         $this->setTable('jobs');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->hasMany('Payments', [
+            'foreignKey' => 'order_id',
+            'bindingKey' => 'service_order_id'
+        ]);
+
+        $this->hasMany('AccountPayments', [
+            'foreignKey' => 'job_id'
+        ]);
+
+        $this->hasMany('Technicians', [
+            'className' => 'Contractors',
+            'foreignKey' => 'technician_id',
+            'bindingKey' => 'technician'
+        ]);
 
         /*
          *

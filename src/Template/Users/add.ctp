@@ -7,9 +7,7 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?php echo __('Actions') ?></li>
-        <li><?php echo$this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-        <li><?php echo$this->Html->link(__('List Articles'), ['controller' => 'Articles', 'action' => 'index']) ?></li>
-        <li><?php echo$this->Html->link(__('New Article'), ['controller' => 'Articles', 'action' => 'add']) ?></li>
+        <li><?php echo$this->Html->link(__('Login'), ['action' => 'login']) ?></li>
     </ul>
 </nav>
 <div class="users form large-9 medium-8 columns content">

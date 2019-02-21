@@ -44,6 +44,9 @@ class UsersTable extends Table
         $this->hasMany('Articles', [
             'foreignKey' => 'user_id'
         ]);
+        $this->hasOne('Roles', [
+            'foreignKey' => 'user_id'
+        ]);
     }
 
     /**

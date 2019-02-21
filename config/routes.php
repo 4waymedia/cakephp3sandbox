@@ -46,6 +46,8 @@ use Cake\Routing\Route\DashedRoute;
  */
 Router::defaultRouteClass(DashedRoute::class);
 
+
+
 Router::scope(
     '/articles',
     ['controller' => 'Articles'],
@@ -55,6 +57,9 @@ Router::scope(
 );
 
 Router::scope('/', function (RouteBuilder $routes) {
+
+    $routes->setExtensions(['json', 'csv']);
+
     /**
      * Apply a middleware to the current route scope.
      * Requires middleware to be registered via `Application::routes()` with `registerMiddleware()`

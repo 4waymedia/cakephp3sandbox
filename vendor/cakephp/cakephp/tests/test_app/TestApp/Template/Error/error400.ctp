@@ -14,10 +14,10 @@
  */
 use Cake\Core\Configure;
 ?>
-<h2><?= h($message) ?></h2>
+<h2><?php echo  h($message) ?></h2>
 <p class="error">
-    <strong><?= __d('cake', 'Error'); ?>: </strong>
-    <?= sprintf(
+    <strong><?php echo  __d('cake', 'Error'); ?>: </strong>
+    <?php echo  sprintf(
         __d('cake', 'The requested address %s was not found on this server.'),
         "<strong>'{$url}'</strong>"
     ) ?>

@@ -1,8 +1,8 @@
 <div class="users form">
-    <?= $this->Form->create(false); ?>
+    <?php echo  $this->Form->create(false); ?>
         <fieldset>
-            <legend><?= __('Add User'); ?></legend>
+            <legend><?php echo  __('Add User'); ?></legend>
         </fieldset>
-    <?= $this->Form->submit('Submit'); ?>
-    <?= $this->Form->end(); ?>
+    <?php echo  $this->Form->submit('Submit'); ?>
+    <?php echo  $this->Form->end(); ?>
 </div>

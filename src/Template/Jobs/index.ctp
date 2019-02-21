@@ -3,43 +3,84 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Job[]|\Cake\Collection\CollectionInterface $jobs
  */
+
+$filter_prod['All'] = $filter_tech['ALL'] = 'ALL';
+foreach($job_statuses as $status){
+    $filter_tech[$status['job_status']] = $status['job_status'];
+}
+
+foreach($product_order_statuses as $status){
+    $filter_prod[$status['product_order_status']] = $status['product_order_status'];
+}
+
+
+
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
+<nav class="large-2 medium-3 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?php echo __('Actions'); ?></li>
+        <li><?= $this->Html->link(__('Import'), ['controller'=>'content','action' => 'index']) ?></li>
         <li><?php echo $this->Html->link(__('New Job'), ['action' => 'add']); ?></li>
     </ul>
 </nav>
-<div class="jobs index large-9 medium-8 columns content">
+<div class="jobs index large-10 medium-9 columns content">
     <h3><?php echo __('Jobs'); ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?php echo $this->Paginator->sort('id'); ?></th>
                 <th scope="col"><?php echo $this->Paginator->sort('job_status'); ?></th>
                 <th scope="col"><?php echo $this->Paginator->sort('appointment_date'); ?></th>
                 <th scope="col"><?php echo $this->Paginator->sort('product_order_id'); ?></th>
                 <th scope="col"><?php echo $this->Paginator->sort('product_order_status'); ?></th>
                 <th scope="col"><?php echo $this->Paginator->sort('technician'); ?></th>
                 <th scope="col"><?php echo $this->Paginator->sort('ship_city'); ?></th>
+                <th>Image</th>
                 <th scope="col" class="actions"><?php echo __('Actions'); ?></th>
+            </tr>
+            <tr>
+                <th scope="col">
+                    <?php echo $this->Form->select('filter_tech', [
+                            'options'=>$filter_tech
+                    ]);?>
+                    </th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"><?php echo $this->Form->select('filter_tech', [
+                        'options'=>$filter_prod
+                    ]);?></th>
+                <th scope="col">Filter</th>
+                <th scope="col">Filter</th>
+                <th></th>
+                <th scope="col">Filter</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($jobs as $job): ?>
+            <?php foreach ($jobs as $job):
+
+                if($job->id == 175)
+                {
+                    debug($job);
+                    die();
+                }
+
+                ?>
             <tr>
-                <td><?php echo $this->Number->format($job->id); ?></td>
+
                 <td><?php echo h($job->job_status); ?></td>
                 <td><?php echo h($job->appointment_date); ?></td>
 
-                <td><?php echo $this->Number->format($job->product_order_id); ?></td>
+                <td><?php echo $job->product_order_id; ?></td>
                 <td><?php echo h($job->product_order_status); ?></td>
-                <td><?php echo h($job->technician); ?></td>
+                <td><?php echo explode('-', $job->technician)[0]; ?></td>
                 <td><?php echo h($job->ship_city); ?></td>
+                <td><?php
+                    $url = '/products/'.$job->product_asin.'.jpg';
+                    echo $this->Html->image($url);?></td>
                 <td class="actions">
                     <?php echo $this->Html->link(__('View'), ['action' => 'view', $job->id]); ?>
                     <?php echo $this->Html->link(__('Edit'), ['action' => 'edit', $job->id]); ?>
-                    <?php echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $job->id], ['confirm' => __('Are you sure you want to delete # {0}?', $job->id)]); ?>
+                    <!-- AMAZON URL https://www.amazon.com/s?k=B01ETS3EJM -->
+                    <?php echo $this->Html->link(__('PRODUCT'), 'https://www.amazon.com/s?k='. $job->product_asin,['target'=>'_blank']); ?>
                 </td>
             </tr>
             <?php endforeach; ?>

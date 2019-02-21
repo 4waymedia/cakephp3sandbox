@@ -206,3 +206,7 @@ Type::build('timestamp')
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
 //Inflector::rules('transliteration', ['/å/' => 'aa']);
+
+Plugin::load('CsvView', ['bootstrap' => true, 'routes' => true]);
+Plugin::load('Importer', ['bootstrap' => true, 'routes' => true]);
+//$this->addPlugin('Importer', ['autoload' => true]);
