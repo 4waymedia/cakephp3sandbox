@@ -34,7 +34,7 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($jobs as $job):
+        <?php foreach ($jobs as $job) {
 
             $profit = 0;
             ?>
@@ -72,7 +72,7 @@
                     <?php if(!empty($job['payments'])){echo ' | ' .$this->Html->link(__('Make Payment'), ['controller'=>'account-payments', 'action' => 'add', $job->id]);}  ?>
                 </td>
             </tr>
-        <?php endforeach; ?>
+        <?php } ?>
         </tbody>
     </table>
 

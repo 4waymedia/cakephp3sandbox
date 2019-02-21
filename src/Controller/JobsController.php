@@ -21,9 +21,32 @@ class JobsController extends AppController
     public function index()
     {
 
+        // Handle filters by Job Status
+        $job_status = $this->request->getQuery('job_status');
+        if($job_status && $job_status != 'all'){
+            $this->paginate['conditions']['job_status'] = $job_status;
+        }
+
+        // Handle filters by Product Order Status
+        $product_status = $this->request->getQuery('product_status');
+        if($product_status && $product_status != 'all'){
+            $this->paginate['conditions']['product_order_status'] = $product_status;
+        }
+
+        $status_query = $this->Jobs->find();
+
+        $job_statuses = $status_query->select(['job_status'])
+            ->distinct(['job_status']);
+
+        $product_order_statuses = $status_query->select(['product_order_status'])
+            ->distinct(['product_order_status']);
+
+        $job_statuses = $job_statuses->toArray();
+        $product_order_statuses = $product_order_statuses->toArray();
+
         $jobs = $this->paginate($this->Jobs);
 
-        $this->set(compact('jobs'));
+        $this->set(compact('jobs', 'job_statuses', 'product_order_statuses'));
     }
 
     /**

@@ -26,7 +26,7 @@
             echo $this->Form->control('last_name');
             echo $this->Form->control('email');
             echo $this->Form->control('nickname');
-            echo $this->Form->control('amazon_id');
+            echo $this->Form->control('technician_id');
             echo $this->Form->hidden('role_id');
         ?>
     </fieldset>

@@ -100,7 +100,17 @@ class ContentComponent extends Component
                 $entity->set($data,['guard' => false]);
                 $result = $theTable->save($entity);
             }
+
+            if(isset($data['technician'])){
+                $technicians[$data['technician']] = $data['technician'];
+            }
+
+
             $results[] = $result;
+        }
+
+        if(isset($technicians)){
+            $this->validateTechnicians($technicians);
         }
 
         // close the file
@@ -120,6 +130,36 @@ class ContentComponent extends Component
         }
 
         return str_replace(" ", "_", $string);
+
+    }
+
+    public function validateTechnicians($technicians)
+    {
+        $ContractorsTable = TableRegistry::getTableLocator()->get('Contractors');
+
+        foreach($technicians as $technician){
+
+            // handle empty technician
+            if($technician == '--'){
+                continue;
+            }
+
+            $split = explode(" ", $technician);
+
+            // Check if contractor exists
+
+            if(isset($split[1]) && !$ContractorsTable->exists(['technician_id' => $split[1]])){
+                // Create NEW contractor
+                $contractor = $ContractorsTable->newEntity();
+                $contractor->first_name = $split[0];
+                $contractor->last_name = explode("-", $split[1])[0];;
+
+                $contractor->technician_id = $split[1];
+                $contractor->role_id = 1;
+
+                $ContractorsTable->save($contractor);
+            }
+        }
 
     }
 
@@ -171,8 +211,11 @@ class ContentComponent extends Component
         $data['order_created_time'] = $date->format('Y-m-d H:i:s');
 
         // Appointment Date
-        $date = \DateTime::createFromFormat('m-d-Y', $data['appointment_date']);
-        $data['appointment_date'] = $date->format('Y-m-d');
+        if(isset($data['appointment_date']) && $data['appointment_date'] != '--'){
+            $date = \DateTime::createFromFormat('m-d-Y', $data['appointment_date']);
+            $data['appointment_date'] = $date->format('Y-m-d');
+        }
+
 
 
         return $data;

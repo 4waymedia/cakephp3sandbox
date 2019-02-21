@@ -17,15 +17,15 @@
         <thead>
             <tr>
 
-                <th scope="col"><?= $this->Paginator->sort('Date') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Transaction_type') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Order_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Product_Details') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Total_product_charges') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Total_promotional_rebates') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Amazon_fees') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Other') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Total') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('date') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('transaction_type') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('order_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('product_Details') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('total_product_charges') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('total_promotional_rebates') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('amazon_fees') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('other') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('total') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>

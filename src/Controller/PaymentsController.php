@@ -112,8 +112,6 @@ class PaymentsController extends AppController
                 ->where(['Comments.approved' => true]);
         });
 
-        debug($records);
-
         $this->set(compact('records'));
     }
 

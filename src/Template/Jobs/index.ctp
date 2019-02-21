@@ -3,6 +3,18 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Job[]|\Cake\Collection\CollectionInterface $jobs
  */
+
+$filter_prod['All'] = $filter_tech['ALL'] = 'ALL';
+foreach($job_statuses as $status){
+    $filter_tech[$status['job_status']] = $status['job_status'];
+}
+
+foreach($product_order_statuses as $status){
+    $filter_prod[$status['product_order_status']] = $status['product_order_status'];
+}
+
+
+
 ?>
 <nav class="large-2 medium-3 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -23,6 +35,21 @@
                 <th scope="col"><?php echo $this->Paginator->sort('technician'); ?></th>
                 <th scope="col"><?php echo $this->Paginator->sort('ship_city'); ?></th>
                 <th scope="col" class="actions"><?php echo __('Actions'); ?></th>
+            </tr>
+            <tr>
+                <th scope="col">
+                    <?php echo $this->Form->select('filter_tech', [
+                            'options'=>$filter_tech
+                    ]);?>
+                    </th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"><?php echo $this->Form->select('filter_tech', [
+                        'options'=>$filter_prod
+                    ]);?></th>
+                <th scope="col">Filter</th>
+                <th scope="col">Filter</th>
+                <th scope="col">Filter</th>
             </tr>
         </thead>
         <tbody>

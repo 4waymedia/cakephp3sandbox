@@ -37,7 +37,6 @@ class Contractor extends Entity
         'last_name' => true,
         'email' => true,
         'nickname' => true,
-        'amazon_id' => true,
         'role_id' => true,
         'created' => true,
         'modified' => true,

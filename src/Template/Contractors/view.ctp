@@ -38,7 +38,7 @@
         </tr>
         <tr>
             <th scope="row"><?php echo __('Amazon Id') ?></th>
-            <td><?php echo h($contractor->amazon_id) ?></td>
+            <td><?php echo h($contractor->technician_id) ?></td>
         </tr>
         <tr>
             <th scope="row"><?php echo __('Id') ?></th>

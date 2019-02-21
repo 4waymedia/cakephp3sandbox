@@ -37,7 +37,7 @@
                 <th scope="col"><?= __('Last Name') ?></th>
                 <th scope="col"><?= __('Email') ?></th>
                 <th scope="col"><?= __('Nickname') ?></th>
-                <th scope="col"><?= __('Amazon Id') ?></th>
+                <th scope="col"><?= __('Technician Id') ?></th>
                 <th scope="col"><?= __('Role Id') ?></th>
                 <th scope="col"><?= __('Created') ?></th>
                 <th scope="col"><?= __('Modified') ?></th>
@@ -50,7 +50,7 @@
                 <td><?= h($contractors->last_name) ?></td>
                 <td><?= h($contractors->email) ?></td>
                 <td><?= h($contractors->nickname) ?></td>
-                <td><?= h($contractors->amazon_id) ?></td>
+                <td><?= h($contractors->technician_id) ?></td>
                 <td><?= h($contractors->role_id) ?></td>
                 <td><?= h($contractors->created) ?></td>
                 <td><?= h($contractors->modified) ?></td>

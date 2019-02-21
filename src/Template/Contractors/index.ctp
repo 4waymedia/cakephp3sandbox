@@ -16,11 +16,11 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?php echo  $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?php echo  $this->Paginator->sort('first_name') ?></th>
+                <th scope="col"><?php echo  $this->Paginator->sort('last_name') ?></th>
+                <th scope="col"><?php echo  $this->Paginator->sort('technician_id',['Label'=>'Technician ID']) ?></th>
                 <th scope="col"><?php echo  $this->Paginator->sort('email') ?></th>
-                <th scope="col"><?php echo  $this->Paginator->sort('nickname') ?></th>
-                <th scope="col"><?php echo  $this->Paginator->sort('amazon_id') ?></th>
-                <th scope="col"><?php echo  $this->Paginator->sort('role_id') ?></th>
+
                 <th scope="col" class="actions"><?php echo  __('Actions') ?></th>
             </tr>
         </thead>
@@ -30,11 +30,11 @@
                 //debug($contractor->role_id);
                 ?>
             <tr>
-                <td><?php echo  $contractor->technician_id; ?></td>
+                <td><?php echo  $contractor->first_name; ?></td>
+                <td><?php echo  $contractor->last_name; ?></td>
+                <td><?php echo  h($contractor->technician_id) ?></td>
                 <td><?php echo  h($contractor->email) ?></td>
-                <td><?php echo  h($contractor->nickname) ?></td>
-                <td><?php echo  h($contractor->amazon_id) ?></td>
-                <td><?php echo $roles[$contractor->role_id] ?></td>
+
                 <td class="actions">
                     <?php echo  $this->Html->link(__('View'), ['action' => 'view', $contractor->id]) ?>
                     <?php echo  $this->Html->link(__('Edit'), ['action' => 'edit', $contractor->id]) ?>
