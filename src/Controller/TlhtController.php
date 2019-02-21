@@ -15,7 +15,7 @@ class TlhtController extends AppController
     public $paginate = [
         'limit' => 50,
         'order' => [
-            'Jobs.appointment_date' => 'DESC'
+            'appointment_date' => 'DESC'
         ]
     ];
 
@@ -37,6 +37,15 @@ class TlhtController extends AppController
     public function index()
     {
         $this->loadModel('Jobs');
+
+        if($this->request->getParam('pass'))
+        {
+            $this->paginate['condition'] = [
+
+            ];
+        }
+
+        $passedArgs = $this->request->getParam('pass');
 
         $jobs = $this->Paginator->paginate($this->Jobs->find()->contain(['Payments','AccountPayments']), $this->paginate);
         $this->set(compact('jobs'));

@@ -41,7 +41,6 @@ class ContentComponent extends Component
         // move up to the header row
         while ($row_counter < $obj_model['header_row']) {
             $row = fgetcsv($handle);
-
             $row_counter++;
         }
 
@@ -56,7 +55,6 @@ class ContentComponent extends Component
                 $fields[] = $this->getFieldFromHeaderString($head, $delimiter);
             }
         }
-
 
         // read each data row in the file
         while (($row = fgetcsv($handle, 0, $delimiter)) !== FALSE) {
@@ -83,8 +81,9 @@ class ContentComponent extends Component
             if($model == 'Payments'){
                 // Adjust amounts based on Payment Type
                 $data = $this->sanitizePaymentData($data);
+            } elseif ($model == 'Jobs'){
+                $data = $this->sanitizeJobData($data);
             }
-
 
             if( $id && $theTable->exists(['id' => $id]) ){
 
@@ -126,6 +125,7 @@ class ContentComponent extends Component
 
     public function sanitizePaymentData($data)
     {
+
         // Handle Refund Data
         if(isset($data['transaction_type']) && $data['transaction_type'] == 'Refund'){
             // Check Admin Fee
@@ -156,6 +156,24 @@ class ContentComponent extends Component
                 unset($data['amount']);
             }
         }
+
+        // Handle Date
+        $date = \DateTime::createFromFormat('M d, Y', $data['date']);
+        $data['date'] = $date->format('Y-m-d');
+
+        return $data;
+    }
+
+    public function sanitizeJobData($data)
+    {
+        // Order Created Date
+        $date = \DateTime::createFromFormat('m-d-Y H:i:s', $data['order_created_time']);
+        $data['order_created_time'] = $date->format('Y-m-d H:i:s');
+
+        // Appointment Date
+        $date = \DateTime::createFromFormat('m-d-Y', $data['appointment_date']);
+        $data['appointment_date'] = $date->format('Y-m-d');
+
 
         return $data;
     }
