@@ -1,1 +1,5 @@
 /.idea/workspace.xml
+tmp/cache/models/*
+tmp/cache/*
+logs/*
+tmp/*
