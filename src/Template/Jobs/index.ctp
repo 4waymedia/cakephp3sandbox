@@ -34,6 +34,7 @@ foreach($product_order_statuses as $status){
                 <th scope="col"><?php echo $this->Paginator->sort('product_order_status'); ?></th>
                 <th scope="col"><?php echo $this->Paginator->sort('technician'); ?></th>
                 <th scope="col"><?php echo $this->Paginator->sort('ship_city'); ?></th>
+                <th>Image</th>
                 <th scope="col" class="actions"><?php echo __('Actions'); ?></th>
             </tr>
             <tr>
@@ -49,6 +50,7 @@ foreach($product_order_statuses as $status){
                     ]);?></th>
                 <th scope="col">Filter</th>
                 <th scope="col">Filter</th>
+                <th></th>
                 <th scope="col">Filter</th>
             </tr>
         </thead>
@@ -71,9 +73,14 @@ foreach($product_order_statuses as $status){
                 <td><?php echo h($job->product_order_status); ?></td>
                 <td><?php echo explode('-', $job->technician)[0]; ?></td>
                 <td><?php echo h($job->ship_city); ?></td>
+                <td><?php
+                    $url = '/products/'.$job->product_asin.'.jpg';
+                    echo $this->Html->image($url);?></td>
                 <td class="actions">
                     <?php echo $this->Html->link(__('View'), ['action' => 'view', $job->id]); ?>
                     <?php echo $this->Html->link(__('Edit'), ['action' => 'edit', $job->id]); ?>
+                    <!-- AMAZON URL https://www.amazon.com/s?k=B01ETS3EJM -->
+                    <?php echo $this->Html->link(__('PRODUCT'), 'https://www.amazon.com/s?k='. $job->product_asin,['target'=>'_blank']); ?>
                 </td>
             </tr>
             <?php endforeach; ?>
