@@ -277,7 +277,7 @@ return [
             'port' => '3306',
             'username' => 'root',
             'password' => 'root',
-            'database' => 'cake_cms',
+            'database' => 'amazon_jobs',
             /*
              * You do not need to set this flag to use full utf-8 encoding (internal default since CakePHP 3.6).
              */
