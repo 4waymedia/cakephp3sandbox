@@ -35,10 +35,13 @@ class Application extends BaseApplication
      */
     public function bootstrap()
     {
-        $this->addPlugin('DebugKit');
+        //$this->addPlugin('CsvView::class');
 
         // Call parent to load bootstrap from files.
         parent::bootstrap();
+
+        //$this->addPlugin('DebugKit');
+        $this->addPlugin('Importer', ['routes'=> true]);
 
         if (PHP_SAPI === 'cli') {
             try {

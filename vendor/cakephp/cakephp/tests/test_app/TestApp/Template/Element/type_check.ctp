@@ -1,1 +1,1 @@
-<?= gettype($form); ?>
+<?php echo  gettype($form); ?>

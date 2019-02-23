@@ -1,3 +1,3 @@
 This is the second parent.
-<?= $this->fetch('content'); ?>
-<?= $this->fetch('sidebar'); ?>
+<?php echo  $this->fetch('content'); ?>
+<?php echo  $this->fetch('sidebar'); ?>

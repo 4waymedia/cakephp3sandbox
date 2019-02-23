@@ -4,7 +4,6 @@ CREATE TABLE `contractors` (
                              `last_name` varchar(30) DEFAULT NULL,
                              `email` varchar(50) NOT NULL,
                              `nickname` varchar(64) NOT NULL,
-                             `amazon_id` varchar(64) NOT NULL,
                              `type_id` int(11)  NOT NULL,
                              `created` datetime DEFAULT NULL,
                              `modified` datetime DEFAULT NULL,

@@ -30,14 +30,15 @@ class Payment extends Entity
      * @var array
      */
     protected $_accessible = [
-        'Date' => true,
-        'Transaction_type' => true,
-        'Order_ID' => true,
-        'Product_Details' => true,
-        'Total_product_charges' => true,
-        'Total_promotional_rebates' => true,
-        'Amazon_fees' => true,
-        'Other' => true,
-        'Total' => true
+        'id'=>true,
+        'date' => true,
+        'transaction_type' => true,
+        'order_id' => true,
+        'product_Details' => true,
+        'total_product_charges' => true,
+        'total_promotional_rebates' => true,
+        'amazon_fees' => true,
+        'other' => true,
+        'total' => true
     ];
 }

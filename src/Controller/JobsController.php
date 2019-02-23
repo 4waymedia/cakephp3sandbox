@@ -21,9 +21,44 @@ class JobsController extends AppController
     public function index()
     {
 
+        // Handle filters by Job Status
+        $job_status = $this->request->getQuery('job_status', 'all');;
+        if($job_status && $job_status != 'all'){
+            $this->paginate['conditions']['job_status'] = $job_status;
+        }
+
+        // Handle filters by Product Order Status
+        $product_status = $this->request->getQuery('product_status', 'all');;
+        if($product_status && $product_status != 'all'){
+            $this->paginate['conditions']['product_order_status'] = $product_status;
+        }
+
+        // Handle filters by Product Order Status
+        $technician = $this->request->getQuery('technician', 'all');;
+        if($technician && $technician != 'all'){
+            $this->paginate['conditions']['technician'] = $technician;
+        }
+        
+        $status_query = $this->Jobs->find();
+
+        $job_statuses = $status_query->select(['job_status'])->distinct(['job_status']);
+
+        $product_order_statuses = $this->Jobs->find('list', [
+            'keyField'=>'product_order_status',
+            'valueField'=>'product_order_status'
+        ])->distinct();
+
+        $technicians = $this->Jobs->find('list', [
+            'keyField' => 'technician',
+            'valueField' => 'technician'
+        ])->distinct();
+
+        $job_statuses = $job_statuses->toArray();
+        $product_order_statuses = $product_order_statuses->toArray();
+
         $jobs = $this->paginate($this->Jobs);
 
-        $this->set(compact('jobs'));
+        $this->set(compact('jobs', 'job_statuses', 'product_order_statuses', 'technicians'));
     }
 
     /**
@@ -36,7 +71,7 @@ class JobsController extends AppController
     public function view($id = null)
     {
         $job = $this->Jobs->get($id, [
-            //'contain' => ['ServiceOrders', 'ProductOrders', 'Buyers', 'Jobs']
+            'contain' => ['Technicians']
         ]);
 
         $this->set('job', $job);

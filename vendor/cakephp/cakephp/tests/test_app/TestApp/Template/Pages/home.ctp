@@ -11,9 +11,9 @@ if (!Configure::read('debug')):
     throw new Error\NotFoundException();
 endif;
 ?>
-<h2><?= sprintf('Release Notes for CakePHP %s.', Configure::version()); ?></h2>
+<h2><?php echo  sprintf('Release Notes for CakePHP %s.', Configure::version()); ?></h2>
 <p>
-    <a href="https://cakephp.org/changelogs/<?= Configure::version(); ?>">Read the changelog</a>
+    <a href="https://cakephp.org/changelogs/<?php echo  Configure::version(); ?>">Read the changelog</a>
 </p>
 
 <?php if (file_exists(WWW_ROOT . 'css' . DS . 'cake.generic.css')): ?>
@@ -53,7 +53,7 @@ endif;
 $engine = Cache::engine('_cake_model_');
 $settings = $engine ? $engine->config() : false;
 if (!empty($settings)): ?>
-    <span class="notice success">The <em><?= $settings['engine'] ?>Engine</em> is being used for core caching. To change the config edit APP/Config/cache.php</span>
+    <span class="notice success">The <em><?php echo  $settings['engine'] ?>Engine</em> is being used for core caching. To change the config edit APP/Config/cache.php</span>
 <?php else: ?>
     <span class="notice">Your cache is NOT working. Please check the settings in APP/Config/cache.php</span>
 <?php endif; ?>
@@ -87,7 +87,7 @@ if (file_exists(APP . 'Config/datasources.php')): ?>
     <span class="notice">';
         DebugKit is not installed. It will help you inspect and debug different aspects of your application.
         <br/>
-        You can install it from <?= $this->Html->link('GitHub', 'https://github.com/cakephp/debug_kit'); ?>
+        You can install it from <?php echo  $this->Html->link('GitHub', 'https://github.com/cakephp/debug_kit'); ?>
         </span>
 <?php endif; ?>
 </p>
@@ -123,11 +123,11 @@ You can also add some CSS styles for your pages at: APP/webroot/css.;
 <p>
 <ul>
     <li>
-        <?= $this->Html->link('DebugKit', 'https://github.com/cakephp/debug_kit') ?>:
+        <?php echo  $this->Html->link('DebugKit', 'https://github.com/cakephp/debug_kit') ?>:
         provides a debugging toolbar and enhanced debugging tools for CakePHP application.
     </li>
     <li>
-        <?= $this->Html->link('Localized', 'https://github.com/cakephp/localized') ?>:
+        <?php echo  $this->Html->link('Localized', 'https://github.com/cakephp/localized') ?>:
         contains various localized validation classes and translations for specific countries
     </li>
 </ul>
