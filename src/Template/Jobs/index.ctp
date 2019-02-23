@@ -4,16 +4,22 @@
  * @var \App\Model\Entity\Job[]|\Cake\Collection\CollectionInterface $jobs
  */
 
-$filter_prod['All'] = $filter_tech['ALL'] = 'ALL';
+$query = $this->request->getQuery();
+
+$current_url = DS . $this->request->getParam('controller') . DS . $this->request->getParam('action') . DS;
+
+$filter_status['ALL'] = $filter_order['All'] = $filter_tech['ALL'] = 'ALL';
 foreach($job_statuses as $status){
-    $filter_tech[$status['job_status']] = $status['job_status'];
+    $filter_status[$status['job_status']] = $status['job_status'];
 }
 
-foreach($product_order_statuses as $status){
-    $filter_prod[$status['product_order_status']] = $status['product_order_status'];
+foreach($product_order_statuses as $status => $stat){
+    $filter_order[$status] = $stat;
 }
 
-
+foreach($technicians as $technician => $tech){
+    $filter_tech[$tech] = $tech;
+}
 
 ?>
 <nav class="large-2 medium-3 columns" id="actions-sidebar">
@@ -39,16 +45,30 @@ foreach($product_order_statuses as $status){
             </tr>
             <tr>
                 <th scope="col">
-                    <?php echo $this->Form->select('filter_tech', [
-                            'options'=>$filter_tech
+                    <?php echo $this->Form->select('filter_status', $filter_status,[
+                            'id'=>'filter_status',
+                            'class'=>'filter-dropdown',
+                            'data-key'=>'job_status',
+                            'default' => (isset($query['job_status']) ?$query['job_status']:'all')
                     ]);?>
                     </th>
                 <th scope="col"></th>
                 <th scope="col"></th>
-                <th scope="col"><?php echo $this->Form->select('filter_tech', [
-                        'options'=>$filter_prod
+                <th scope="col">
+                    <?php echo $this->Form->select('filter_prod', $filter_order, [
+                        'id'=>'filter_prod',
+                        'data-key'=>'product_status',
+                        'class'=>'filter-dropdown',
+                        'default' => (isset($query['product_status']) ?$query['product_status']:'all')
                     ]);?></th>
-                <th scope="col">Filter</th>
+                <th scope="col">
+                    <?php echo $this->Form->select('filter_tech', $filter_tech,[
+                        'id'=>'filter_tech',
+                        'class'=>'filter-dropdown',
+                        'data-key'=>'technician',
+                        'default' => (isset($query['technician']) ?$query['technician']:'all')
+                    ]);?>
+                </th>
                 <th scope="col">Filter</th>
                 <th></th>
                 <th scope="col">Filter</th>
@@ -97,3 +117,51 @@ foreach($product_order_statuses as $status){
         <p><?php echo $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]); ?></p>
     </div>
 </div>
+<script>
+    $( document ).ready(function() {
+        $('.filter-dropdown').change(function () {
+            var key = $(this).attr('data-key');
+            changeUrlQuery(key, this.value);
+        });
+
+    });
+
+    function changeUrlQuery(key, value){
+
+        var newParam = key + '=' + value;
+        var qs = '';
+        var href = window.location.href.substring(0, window.location.href.indexOf('?'));
+        if(!href){
+            href = window.location.href;
+            qs = '';
+        } else {
+            qs = window.location.href.substring(window.location.href.indexOf('?') + 1, window.location.href.length);
+        }
+
+        if (qs.indexOf(key + '=') == -1) {
+            if (qs == '') {
+                qs = '?'
+            }
+            else {
+                qs = '?' + qs + '&'
+            }
+            qs = qs + newParam;
+
+        }
+        else {
+            var start = qs.indexOf(key + "=");
+            var end = qs.indexOf("&", start);
+            if (end == -1) {
+                end = qs.length;
+            }
+            var curParam = qs.substring(start, end);
+            qs = qs.replace(curParam, newParam);
+        }
+
+        window.location.replace(href + qs);
+
+    };
+
+
+</script>
+
