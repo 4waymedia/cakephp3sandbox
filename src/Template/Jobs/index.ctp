@@ -8,7 +8,7 @@ $query = $this->request->getQuery();
 
 $current_url = DS . $this->request->getParam('controller') . DS . $this->request->getParam('action') . DS;
 
-$filter_status['ALL'] = $filter_order['All'] = $filter_tech['ALL'] = 'ALL';
+$filter_status['all'] = $filter_order['all'] = $filter_tech['all'] = 'All';
 foreach($job_statuses as $status){
     $filter_status[$status['job_status']] = $status['job_status'];
 }
@@ -138,13 +138,11 @@ foreach($technicians as $technician => $tech){
             qs = window.location.href.substring(window.location.href.indexOf('?') + 1, window.location.href.length);
         }
 
+
+        console.log(qs);
+
         if (qs.indexOf(key + '=') == -1) {
-            if (qs == '') {
-                qs = '?'
-            }
-            else {
-                qs = '?' + qs + '&'
-            }
+            if(qs.length > 2) qs = qs + '&';
             qs = qs + newParam;
 
         }
@@ -158,7 +156,7 @@ foreach($technicians as $technician => $tech){
             qs = qs.replace(curParam, newParam);
         }
 
-        window.location.replace(href + qs);
+        window.location.replace(href + '?' + qs);
 
     };
 
