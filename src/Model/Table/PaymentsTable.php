@@ -31,6 +31,9 @@ class PaymentsTable extends Table
     {
         parent::initialize($config);
 
+        // Replace Amazone '--' '---' with NULL
+        $this->addBehavior('HyphenNull');
+
         $this->setTable('payments');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
@@ -42,14 +45,16 @@ class PaymentsTable extends Table
 
     public function beforeSave($event, $entity, $options) {
 
+
+
         if(isset($entity->total_product_charges)){
             // Create Total amount
             $entity->total = (
-                trim($entity->total_product_charges, '$')+
-                trim($entity->amazon_fees, '$')+
-                trim($entity->refund_admin_fee, '$')+
-                trim($entity->refund_referral_fee, '$')+
-                trim($entity->refund_product_charge, '$')
+                (int)str_replace('$','',$entity->total_product_charges)+
+                (int)str_replace('$','',$entity->amazon_fees)+
+                (int)str_replace('$','',$entity->refund_admin_fee)+
+                (int)str_replace('$','',$entity->refund_referral_fee)+
+                (int)str_replace('$','',$entity->refund_product_charge)
             );
         }
     }

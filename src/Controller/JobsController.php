@@ -30,15 +30,26 @@ class JobsController extends AppController
         // Handle filters by Product Order Status
         $product_status = $this->request->getQuery('product_status', 'all');;
         if($product_status && $product_status != 'all'){
-            $this->paginate['conditions']['product_order_status'] = $product_status;
+            if($product_status == 'empty'){
+                $technician = NULL;
+                $this->paginate['conditions'][] = ['product_order_status IS NULL'];
+            } else {
+                $this->paginate['conditions']['product_order_status'] = $product_status;
+            }
         }
 
         // Handle filters by Product Order Status
         $technician = $this->request->getQuery('technician', 'all');;
+
         if($technician && $technician != 'all'){
-            $this->paginate['conditions']['technician'] = $technician;
+            if($technician == 'empty'){
+                $technician = NULL;
+                $this->paginate['conditions'][] = ['technician IS NULL'];
+            } else {
+                $this->paginate['conditions']['technician'] = $technician;
+            }
         }
-        
+
         $status_query = $this->Jobs->find();
 
         $job_statuses = $status_query->select(['job_status'])->distinct(['job_status']);

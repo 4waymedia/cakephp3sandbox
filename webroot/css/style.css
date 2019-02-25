@@ -391,7 +391,7 @@ table tr th {
 }
 
 table tr:nth-of-type(even) {
-    background: none;
+    /*background: none; */
 }
 
 fieldset {

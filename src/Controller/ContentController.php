@@ -71,7 +71,10 @@ class ContentController extends AppController
             if($file = $this->request->getData('Import.csv_file')){
                 $model = $this->request->getData('Import.Model');
                 $results = $this->Content->importContent($model, $file);
+
                 $this->set('import_results', $results);
+                $this->set('import_model', $model);
+
                 if(isset($results['error'])){
                     $this->Flash->set('Error with Model name:', [
                         'element' => 'error'
