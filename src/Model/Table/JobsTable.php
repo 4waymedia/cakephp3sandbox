@@ -38,6 +38,9 @@ class JobsTable extends Table
     {
         parent::initialize($config);
 
+        // Replace Amazone '--' '---' with NULL
+        $this->addBehavior('HyphenNull');
+
         $this->setTable('jobs');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
@@ -79,6 +82,17 @@ class JobsTable extends Table
         ]);
         */
     }
+
+    public function beforeSave($event, $entity, $options) {
+
+        // Add padding to buyer id with zeros
+        if(isset($entity->buyer_id)){
+            $entity->buyer_id = str_pad($entity->buyer_id, 12, '0', STR_PAD_LEFT);
+        }
+
+    }
+
+
 
     /**
      * Default validation rules.

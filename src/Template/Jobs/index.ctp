@@ -14,11 +14,20 @@ foreach($job_statuses as $status){
 }
 
 foreach($product_order_statuses as $status => $stat){
-    $filter_order[$status] = $stat;
+    if($stat == null){
+        $filter_order['empty'] = 'empty';
+    } else {
+        $filter_order[$status] = $stat;
+    }
 }
 
 foreach($technicians as $technician => $tech){
-    $filter_tech[$tech] = $tech;
+    if($tech == null){
+        $filter_tech['empty'] = 'empty';
+    } else {
+        $filter_tech[$tech] = $tech;
+    }
+
 }
 
 ?>

@@ -29,9 +29,14 @@ class ContentComponent extends Component
             // Model is not allowed
             return array('error'=>'Model not allowed');
         }
+        // Load table
+        $theTable = TableRegistry::getTableLocator()->get($model);
+
+        // Get Valid fields for checking header line
+        $valid_fields = $theTable->getSchema()->columns();
 
         $obj_model = $this->downloadData[$model];
-        $row_counter = 1;
+        $row_counter = 0;
 
         $delimiter = $this->getDelimiterForFile($file['type']);
 
@@ -40,19 +45,31 @@ class ContentComponent extends Component
 
         // move up to the header row
         while ($row_counter < $obj_model['header_row']) {
-            $row = fgetcsv($handle);
-            $row_counter++;
-        }
+            $row = fgetcsv($handle, $delimiter);
 
-        // read header row
-        $header = fgetcsv($handle, 0, $delimiter);
+            $pass = true;
+            foreach($row as $pointer => $label){
+                $test_name = $this->getFieldFromHeaderString($label);
+                if(!in_array($test_name, $valid_fields)){
+                    $pass = false;
+                }
+            }
+
+            if($pass){
+                // set header for parsing
+                $header = $row;
+                // EXIT while
+                $row_counter = $obj_model['header_row'];
+            }
+
+        }
 
         // Get fields from Header
         if($model){
             $fields = array();
             foreach ($header as $k => $head) {
                 // check if period is in header
-                $fields[] = $this->getFieldFromHeaderString($head, $delimiter);
+                $fields[] = $this->getFieldFromHeaderString($head);
             }
         }
 
@@ -71,12 +88,10 @@ class ContentComponent extends Component
                     // get the data field from field
                     $data[$head]=(isset($row[$k])) ? $row[$k] : '';
                 }
-
             }
 
             // see if we have an id
             $id = isset($data[$model]['id']) ? $data[$model]['id'] : false;
-            $theTable = TableRegistry::getTableLocator()->get($model);
 
             if($model == 'Payments'){
                 // Adjust amounts based on Payment Type
@@ -85,14 +100,21 @@ class ContentComponent extends Component
                 $data = $this->sanitizeJobData($data);
             }
 
+            // Save Refunds to table
+            if(isset($data['refunds'])){
+
+                unset($data['refunds']);
+            }
+
             if( $id && $theTable->exists(['id' => $id]) ){
 
                 $entity = $theTable->get($id);
                 $entity->set($data[$model],['guard' => false]);
                 $result = $theTable->save($entity);
 
-            } elseif($theTable->exists([$obj_model['key'] => $data[$obj_model['key']]])) {
-                $entity = $theTable->{$obj_model['query']}( $data[$obj_model['key']])->first() ;
+            } elseif(isset($data[$obj_model['key']]) && $theTable->exists([$obj_model['key'] => $data[$obj_model['key']]])) {
+
+                $entity = $theTable->{$obj_model['query']}( $data[$obj_model['key']])->first();
                 $entity->set($data,['guard' => false]);
                 $result = $theTable->save($entity);
             } else {
@@ -104,7 +126,6 @@ class ContentComponent extends Component
             if(isset($data['technician'])){
                 $technicians[$data['technician']] = $data['technician'];
             }
-
 
             $results[] = $result;
         }
@@ -206,18 +227,19 @@ class ContentComponent extends Component
 
     public function sanitizeJobData($data)
     {
+
         // Order Created Date
-        $date = \DateTime::createFromFormat('m-d-Y H:i:s', $data['order_created_time']);
-        $data['order_created_time'] = $date->format('Y-m-d H:i:s');
+        if(isset($data['order_created_time']) && $data['order_created_time'] != '--'){
+            $date = \DateTime::createFromFormat('m-d-Y H:i:s', $data['order_created_time']);
+            $data['order_created_time'] = $date->format('Y-m-d H:i:s');
+        }
+
 
         // Appointment Date
         if(isset($data['appointment_date']) && $data['appointment_date'] != '--'){
             $date = \DateTime::createFromFormat('m-d-Y', $data['appointment_date']);
             $data['appointment_date'] = $date->format('Y-m-d');
         }
-
-
-
         return $data;
     }
 

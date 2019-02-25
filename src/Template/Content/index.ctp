@@ -29,9 +29,6 @@ foreach($content_models as $model=>$fields){
 <h1><?php echo __('Download CSV file for bulk editing:');?></h1>
 <p>Select the Model for desired download. This will trigger a download of CSV file will available fields from the database.</p>
 
-
-
-
 <ul class="tabs" data-tabs id="example-tabs">
     <li class="tabs-title is-active"><a href="#info-panel" aria-selected="true">Info</a></li>
     <li class="tabs-title"><a href="#panel2">Import</a></li>
@@ -43,29 +40,13 @@ foreach($content_models as $model=>$fields){
     <!-- data loaded from results -->
         <?php
         if(isset($import_results) && !isset($import_results['error'])){ ?>
-            <label>Results from File upload</label>
+            <label>Results from File upload: <?php echo $import_model; ?></label>
             <?php
-            // Create table to display each list, with stats
-            echo $this->Html->tag('table', null, array('class'=>'table-striped table'));
-            echo $this->Html->tableHeaders(
-                array('id','Transaction Type','Order ID','Product Details','Errors','Actions'),
-                array(),
-                array('class'=>''));
 
-            foreach($import_results as $entity){
+            $results_element = 'import_' . $import_model . '_results';
 
-                echo $this->Html->tableCells([
-                    $entity->id,
-                    $entity->transaction_type,
-                    $entity->order_id,
-                    $entity->product_details,
-                    $entity->errors,
-                        ''
-                ]);
+            echo $this->element( $results_element );
 
-            }
-
-            echo $this->Html->tag('/table');
         } else { ?>
             <p>For ADMIN use ONLY. Importing a CSV will overwrite the database!!!</p>
         <?php } ?>
