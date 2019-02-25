@@ -122,6 +122,7 @@ class ContentComponent extends Component
                 $entity->set($data,['guard' => false]);
                 $result = $theTable->save($entity);
             }
+            
 
             if(isset($data['technician'])){
                 $technicians[$data['technician']] = $data['technician'];
