@@ -43,7 +43,7 @@ foreach($content_models as $model=>$fields){
             <label>Results from File upload: <?php echo $import_model; ?></label>
             <?php
 
-            $results_element = 'import_' . $import_model . '_results';
+            $results_element = 'import_' . strtolower($import_model) . '_results';
 
             echo $this->element( $results_element );
 
