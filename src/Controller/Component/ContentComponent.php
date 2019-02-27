@@ -13,7 +13,7 @@ class ContentComponent extends Component
             'fields'=>['*'],
             'query'=>'findByServiceOrderId',
             'key'=>'service_order_id',
-            'header_row'=>1
+            'header_row'=>4
         ),
         'Payments' => array(
             'fields'=>['*'],
@@ -45,19 +45,22 @@ class ContentComponent extends Component
 
         // move up to the header row
         while ($row_counter < $obj_model['header_row']) {
-            $row = fgetcsv($handle, $delimiter);
+            $row = fgetcsv($handle, 0, $delimiter);
 
-            $pass = true;
+            $pass = false;
+
             foreach($row as $pointer => $label){
                 $test_name = $this->getFieldFromHeaderString($label);
-                if(!in_array($test_name, $valid_fields)){
-                    $pass = false;
+                if(in_array($test_name, $valid_fields)){
+                    $pass = true;
                 }
             }
 
             if($pass){
+
                 // set header for parsing
                 $header = $row;
+
                 // EXIT while
                 $row_counter = $obj_model['header_row'];
             }
