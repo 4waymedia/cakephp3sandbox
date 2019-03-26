@@ -37,6 +37,7 @@ class ContentComponent extends Component
 
         $obj_model = $this->downloadData[$model];
         $row_counter = 0;
+        $seeking = true;
 
         $delimiter = $this->getDelimiterForFile($file['type']);
 
@@ -44,7 +45,7 @@ class ContentComponent extends Component
         $handle = fopen($file['tmp_name'], "r");
 
         // move up to the header row
-        while ($row_counter < $obj_model['header_row']) {
+        while ($seeking && !feof($handle)) {
             $row = fgetcsv($handle, 0, $delimiter);
 
             $pass = false;
@@ -62,10 +63,12 @@ class ContentComponent extends Component
                 $header = $row;
 
                 // EXIT while
-                $row_counter = $obj_model['header_row'];
+                $seeking = false;
             }
 
         }
+
+
 
         // Get fields from Header
         if($model){
@@ -191,6 +194,10 @@ class ContentComponent extends Component
     public function sanitizePaymentData($data)
     {
 
+        $import_record = $data;
+
+        // Check for Transaction_type == 'Other'
+
         // Handle Refund Data
         if(isset($data['transaction_type']) && $data['transaction_type'] == 'Refund'){
             // Check Admin Fee
@@ -237,7 +244,6 @@ class ContentComponent extends Component
             $date = \DateTime::createFromFormat('m-d-Y H:i:s', $data['order_created_time']);
             $data['order_created_time'] = $date->format('Y-m-d H:i:s');
         }
-
 
         // Appointment Date
         if(isset($data['appointment_date']) && $data['appointment_date'] != '--'){

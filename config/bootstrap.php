@@ -45,6 +45,11 @@ use Cake\Utility\Inflector;
 use Cake\Utility\Security;
 
 /**
+ * Application variables
+ * */
+
+
+/**
  * Uncomment block of code below if you want to use `.env` file during development.
  * You should copy `config/.env.default to `config/.env` and set/modify the
  * variables as required.
@@ -209,4 +214,3 @@ Type::build('timestamp')
 
 Plugin::load('CsvView', ['bootstrap' => true, 'routes' => true]);
 Plugin::load('Importer', ['bootstrap' => true, 'routes' => true]);
-//$this->addPlugin('Importer', ['autoload' => true]);

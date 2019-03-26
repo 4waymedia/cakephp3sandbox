@@ -16,6 +16,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 /**
  * Application Controller
@@ -78,6 +79,7 @@ class AppController extends Controller
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
         $this->loadComponent('Security');
+
     }
 
     public function isAuthorized($user = NULL)
@@ -90,13 +92,20 @@ class AppController extends Controller
         }
 
         // Roles start with Capital letter
-        if (isset($user['role']) && $user['role'] === 'Admin') {
-            return true;
+        if(isset($user['role'])){
+
+            if ($user['role'] === 'SysAdmin') {
+                return true;
+            }
+
+            if ($user['role'] === 'Admin') {
+                return true;
+            }
+
         }
 
-
-
-        return true;
-
+        // default
+        return false;
     }
+
 }

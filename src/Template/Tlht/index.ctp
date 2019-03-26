@@ -12,14 +12,60 @@
 </style>
 <nav class="large-2 medium-3 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+        <li class="heading"><?php echo __('Actions') ?></li>
         <li><?php echo $this->Html->link(__('Importer'), ['controller'=>'Content','action' => 'index']) ?></li>
         <li><a href="/accountPayments/">Expense Payments</a></li>
         <li><a href="/roles/">Roles</a></li>
         <li><a href="/users/">Users</a></li>
     </ul>
 </nav>
+
+
 <div class="tlhtJobs index large-10 medium-9 columns content">
+    <div class="box no-shadow ">
+        <div class="box-header bg-transparent">
+            <!-- tools box -->
+            <div class="pull-right box-tools"> <span class="box-btn" data-widget="collapse"><i class="icon-minus"></i>
+                                    </span> <span class="box-btn" data-widget="remove"><i class="icon-cross"></i>
+                                    </span> </div>
+            <h3 class="box-title"><i class="ti-view-list"></i>
+                <?php echo $this->Html->link('Pay Periods', ['controller' => 'pay_periods', 'action' => 'index', '_full' => true]);?>
+            </h3> </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <!-- modal -->
+            <div class="row">
+                <div class="large-3 columns">
+                    <p><strong><?php echo $payPeriods[0]->start_date . ' - ' . $payPeriods[0]->end_date; ?></strong> </p>
+                    <p>These are your active Pay Periods. You can change the status if needed.</p>
+                </div>
+                <div class="large-9 columns">
+                    <table cellpadding="0" cellspacing="0">
+                        <?php
+
+                        echo $this->Html->tableHeaders(['Ends', 'Status', 'Completed', 'Cancelled', 'Pending']);
+
+                        foreach ($payPeriods as $period){
+                            echo $this->Html->tableCells([
+                                [
+                                    $period->end_date,
+                                    $period->status,
+                                    $period->jobs_completed,
+                                    $period->jobs_cancelled,
+                                    $period->jobs_pending
+                                ]
+                            ]);
+                        }?>
+                    </table>
+                </div>
+            </div>
+            <!-- end Modal -->
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <div>
+
+
     <h3><?php echo __('Tlht Dashboard') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
@@ -77,6 +123,7 @@
     </table>
 
 
+
     <div class="paginator">
         <ul class="pagination">
             <?php echo $this->Paginator->first('<< ' . __('first')) ?>
@@ -87,4 +134,6 @@
         </ul>
         <p><?php echo $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
+    </div>
+</div>
 

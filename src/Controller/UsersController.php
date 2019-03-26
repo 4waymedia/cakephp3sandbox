@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 /**
  * User Controller
@@ -122,11 +124,24 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
 
-
             // get role name
             $user['role'] = $this->Users->Roles->get($user['role_id'])->name;
 
             if ($user) {
+
+                $this->Auth->setUser($user);
+                switch($user['role']){
+                    case 'SysADmin':
+                    case 'Admin':
+                        $BusinessesUsers = TableRegistry::get('BusinessesUsers');
+                        $user['business_id'] = $BusinessesUsers->find()->where(['user_id'=> $user['id']])->first()->toArray()['business_id'];
+                        break;
+                    case 'Technician':
+                        $this->Auth->setUser($user);
+                        return $this->redirect(['controller' => 'Contractors', 'action' => 'dashboard']);
+                        break;
+                }
+
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }
@@ -138,5 +153,16 @@ class UsersController extends AppController
     {
         $this->Flash->success('You are now logged out.');
         return $this->redirect($this->Auth->logout());
+    }
+
+    public function verify_setup(){
+        // check if the users account is setup
+
+        // check for current pay period
+
+            // check if first_pay_period_date is set
+
+        // redirect
+
     }
 }

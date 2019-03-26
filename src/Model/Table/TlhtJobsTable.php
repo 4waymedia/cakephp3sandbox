@@ -40,6 +40,8 @@ class TlhtJobsTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
+        $this->addBehavior('Timestamp');
+
         $this->belongsTo('ServiceOrders', [
             'foreignKey' => 'service_order_id',
             'joinType' => 'INNER'

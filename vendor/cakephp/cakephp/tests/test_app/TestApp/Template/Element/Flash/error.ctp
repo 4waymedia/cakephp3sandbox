@@ -1,1 +1,1 @@
-<div class="message"><?= h($message); ?></div>
+<div class="message"><?php echo h($message); ?></div>
