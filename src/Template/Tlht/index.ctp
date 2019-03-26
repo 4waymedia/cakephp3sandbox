@@ -15,8 +15,10 @@
         <li class="heading"><?php echo __('Actions') ?></li>
         <li><?php echo $this->Html->link(__('Importer'), ['controller'=>'Content','action' => 'index']) ?></li>
         <li><a href="/accountPayments/">Expense Payments</a></li>
-        <li><a href="/roles/">Roles</a></li>
-        <li><a href="/users/">Users</a></li>
+        <li><a href="/jobs/">Jobs</a></li>
+        <li><a href="/payments/">Payments</a></li>
+        <li><a href="/contractors/">Contractors</a></li>
+        <li><a href="/tlht/reports">Reports</a></li>
     </ul>
 </nav>
 

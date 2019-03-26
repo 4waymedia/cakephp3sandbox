@@ -59,11 +59,8 @@ $cakeDescription = 'TLHT: Amazon Techs you can count on';
         <section class="top-bar-section">
             <!-- Right Nav Section -->
             <ul class="menu" data-dropdown-menu>
-                <li><a href="/jobs/">Jobs</a></li>
-                <li><a href="/payments/">Payments</a></li>
-                <li><a href="/contractors/">Contractors</a></li>
+                <li><a href="/tlht/setup/">Setup</a></li>
                 <li><a href="/tlht/">Dashboard</a></li>
-                <li><a href="/tlht/reports">Reports</a></li>
 
             </ul>
         </section>
