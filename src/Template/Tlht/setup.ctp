@@ -8,15 +8,16 @@
     <ul class="side-nav">
         <li class="heading"><?php echo __('Actions') ?></li>
         <li><?php echo $this->Html->link(__('Import'), ['controller'=>'content','action' => 'index']) ?></li>
-        <li><?php echo $this->Html->link(__('New Payment'), ['action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="payments index large-10 medium-9 columns content">
     <div>
-    <?php echo $this->Form->create($userBusiness) ?>
+    <?php echo $this->Form->create($businesses) ?>
     <fieldset>
         <legend><?php echo __('Edit Business Setup') ?></legend>
         <?php
+        echo $this->Form->hidden('usersbusinesses.id');
+        echo $this->Form->hidden('user_id');
         echo $this->Form->control('business_name');
         echo $this->Form->control('address_1');
         echo $this->Form->control('address_2');

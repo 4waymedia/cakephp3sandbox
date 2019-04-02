@@ -15,7 +15,7 @@ class AmazonComponent extends Component
      * @param $start_date
      * @return array
      */
-    public function generateUserPayPeriods($user_id, $start_date, $create = false){
+    public function generateBusinessPayPeriods($business_id, $start_date, $create = false){
         $periods = array();
         $timezone = new \DateTimeZone('America/Los_Angeles');
 
@@ -40,14 +40,18 @@ class AmazonComponent extends Component
 
             $status = $first_pay_end_date < $today ? 'closed' : 'active';
 
+            // CREATE FIRST PAY PERIOD FOR MONTH
             $periods[] = array(
+                'business_id'=>$business_id,
                 'start_date'=>$first_pay_start_date->format('Y-m-d'),
                 'end_date'=>$first_pay_end_date->format('Y-m-d'),
                 'status' => $status);
 
             $next_status = $month_end_date < $today ? 'closed' : 'active';
 
+            // CREATE SECOND PAY PERIOD FOR MONTH
             $periods[] = array(
+                'business_id'=>$business_id,
                 'start_date'=>$first_pay_end_date->format('Y-m-d'),
                 'end_date'=>$month_end_date->format('Y-m-d'),
                 'status'=> $next_status);
@@ -58,23 +62,36 @@ class AmazonComponent extends Component
         }
 
         if($create){
-            $this->createPayPeriods($user_id, $periods);
+            $this->createPayPeriods($business_id, $periods);
         }
 
         return $periods;
 
     }
 
-    public function createPayPeriods($user_id, $periods){
+    public function generateNextPayPeriod($business_id){
+        $this->PayPeriods = TableRegistry::getTableLocator()->get('PayPeriods');
+        $last_period = $this->PayPeriods->find('all')
+            ->order(['start_date' => 'DESC'])
+            ->where(['business_id' => $this->Auth->user('business_id')])
+            ->first();
+        // get last pay period dates.
+//        $start_date = last date of last pay period
+
+        // Create from last date
+//        $this->generateBusinessPayPeriods($business_id, $start_date,true);
+    }
+
+    public function createPayPeriods($business_id, $periods){
         $this->PayPeriods = TableRegistry::getTableLocator()->get('PayPeriods');
 
         // Delete all prior periods and stats
-        $this->PayPeriods->deleteAll(['user_id' => $user_id]);
+        $this->PayPeriods->deleteAll(['business_id' => $business_id]);
 
         // Create NEW Pay Periods
         foreach($periods as $time_period => $entity){
             $period = new PayPeriod($entity);
-            $period->user_id = $user_id;
+
             $this->PayPeriods->save($period);
         }
 
@@ -83,11 +100,10 @@ class AmazonComponent extends Component
 
     }
 
-    public function getCurrentPayPeriod($business_id = 2){
+    public function getCurrentPayPeriod($business_id){
         $timezone = new \DateTimeZone('America/Los_Angeles');
         $today = new \DateTime('now', $timezone);
 
-        $bus_user_id = $this->getUserIdForBusinessId($business_id);
 
         $this->PayPeriods = TableRegistry::getTableLocator()->get('PayPeriods');
 

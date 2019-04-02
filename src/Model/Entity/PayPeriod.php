@@ -31,7 +31,7 @@ class PayPeriod extends Entity
      * @var array
      */
     protected $_accessible = [
-        'user_id' => true,
+        'business_id' => true,
         'start_date' => true,
         'end_date' => true,
         'contractors_used' => true,

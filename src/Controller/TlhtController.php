@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
+use Cake\I18n\Time;
 
 /**
  * TlhtJobs Controller
@@ -59,7 +60,9 @@ class TlhtController extends AppController
             ];
         }
 
-        $payPeriods = $this->Amazon->getCurrentPayPeriod();
+        $business_id = $this->Auth->user('business_id');
+
+        $payPeriods = $this->Amazon->getCurrentPayPeriod($business_id);
 
         //$passedArgs = $this->request->getParam('pass');
 
@@ -107,17 +110,43 @@ class TlhtController extends AppController
         $user_id = $user = $this->Auth->user('id');
 
         $this->UserBusinesses = TableRegistry::getTableLocator()->get('BusinessesUsers');
+        $this->Businesses = TableRegistry::getTableLocator()->get('Businesses');
+
+        $businesses = $this->Businesses->find('all', [
+            'conditions' => ['user_id'=>$user_id]
+        ])->first();
+
+        if(!$businesses){
+            $businesses = $this->Businesses->newEntity();
+            $businesses->user_id = $user_id;
+            $this->Businesses->save($businesses);
+        }
+
         $userBusiness = $this->UserBusinesses->find('all', [
             'conditions' => ['user_id'=>$user_id]
         ])->first();
 
+        if(!$userBusiness){
+            $userBusiness = $this->UserBusinesses->newEntity();
+            $userBusiness->user_id = $user_id;
+            $userBusiness->business_id = $businesses->id;
+            $this->UserBusinesses->save($userBusiness);
+        }
+
         if ($this->request->is(['patch', 'post', 'put'])) {
+
+
+            $businesses = $this->Businesses->patchEntity($businesses, $this->request->getData());
+
             $userBusiness = $this->UserBusinesses->patchEntity($userBusiness, $this->request->getData());
-            if ($this->UserBusinesses->save($userBusiness)) {
+
+            if ($this->Businesses->save($businesses)) {
 
                 if(isset($userBusiness->first_pay_period_date)){
-                    $start_date = $userBusiness->first_pay_period_date;
-                    $this->Amazon->generateUserPayPeriods($user_id, $start_date, true);
+                    // Convert to datetime
+                    $start_date = \Cake\Database\Type::build('date')->marshal($userBusiness->first_pay_period_date);
+
+                    $this->Amazon->generateBusinessPayPeriods($userBusiness->business_id, $start_date, true);
                 }
                 $this->Flash->success(__('The user business has been saved.'));
 
@@ -126,7 +155,7 @@ class TlhtController extends AppController
             }
         }
 
-        $this->set(compact('userBusiness', 'users'));
+        $this->set(compact('businesses','userBusiness'));
     }
 
 }

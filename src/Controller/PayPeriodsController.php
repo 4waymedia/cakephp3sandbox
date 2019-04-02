@@ -26,7 +26,8 @@ class PayPeriodsController extends AppController
     public function index()
     {
 
-        $payPeriods = $this->paginate($this->PayPeriods);
+        $query = $this->PayPeriods->find('all')->order(['start_date' => 'DESC'])->where(['business_id' => $this->Auth->user('business_id')]);
+        $payPeriods = $this->paginate($query);
 
         $this->set(compact('payPeriods'));
     }
