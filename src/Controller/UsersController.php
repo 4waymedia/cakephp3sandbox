@@ -25,7 +25,7 @@ class UsersController extends AppController
     public function initialize()
     {
         parent::initialize();
-        $this->Auth->allow(['logout', 'add', 'login']);
+        $this->Auth->allow(['logout', 'register', 'login']);
     }
 
     /**
@@ -153,6 +153,11 @@ class UsersController extends AppController
     {
         $this->Flash->success('You are now logged out.');
         return $this->redirect($this->Auth->logout());
+    }
+
+
+    public function register(){
+
     }
 
     public function verify_setup(){

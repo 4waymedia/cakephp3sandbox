@@ -23,7 +23,6 @@
     </ul>
 </nav>
 
-
 <div class="tlhtJobs index large-10 medium-9 columns content">
     <div class="box no-shadow ">
         <div class="box-header bg-transparent">
@@ -67,7 +66,6 @@
         <!-- /.box-body -->
     </div>
     <div>
-
 
     <h3><?php echo __('Tlht Dashboard') ?></h3>
     <table cellpadding="0" cellspacing="0">
@@ -124,8 +122,6 @@
         <?php } ?>
         </tbody>
     </table>
-
-
 
     <div class="paginator">
         <ul class="pagination">
