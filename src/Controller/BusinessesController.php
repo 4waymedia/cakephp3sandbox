@@ -20,7 +20,10 @@ class BusinessesController extends AppController
      */
     public function index()
     {
-        $businesses = $this->paginate($this->Businesses);
+
+        $query = $this->Businesses->find('all')->where(['user_id' => $this->Auth->user('id')]);
+        $businesses = $this->paginate($query);
+
 
         $this->set(compact('businesses'));
     }
@@ -99,6 +102,9 @@ class BusinessesController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $business = $this->Businesses->get($id);
         if ($this->Businesses->delete($business)) {
+
+            $this->deleteAssociated($id);
+
             $this->Flash->success(__('The business has been deleted.'));
         } else {
             $this->Flash->error(__('The business could not be deleted. Please, try again.'));
@@ -106,4 +112,13 @@ class BusinessesController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function deleteAssociated($id){
+
+        // Delete Pay Periods
+        $this->loadModel('PayPeriods');
+        $this->PayPeriods->deleteAll(['business_id' => $id]);
+
+    }
+
 }

@@ -119,7 +119,9 @@ class TlhtController extends AppController
         if(!$businesses){
             $businesses = $this->Businesses->newEntity();
             $businesses->user_id = $user_id;
-            $this->Businesses->save($businesses);
+            if($this->Businesses->save($businesses)){
+                $this->request->getSession()->write('Auth.User.business_id', $businesses->id);
+            }
         }
 
         $userBusiness = $this->UserBusinesses->find('all', [
@@ -148,7 +150,8 @@ class TlhtController extends AppController
 
                     $this->Amazon->generateBusinessPayPeriods($userBusiness->business_id, $start_date, true);
                 }
-                $this->Flash->success(__('The user business has been saved.'));
+                $this->Flash->success(__('The have created your Business'));
+                $this->redirect(['controller'=>'businesses', 'action'=>'index']);
 
             }else{
                 $this->Flash->error(__('The user business could not be saved. Please, try again.'));

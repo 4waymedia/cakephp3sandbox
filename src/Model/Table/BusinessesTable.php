@@ -45,6 +45,11 @@ class BusinessesTable extends Table
         $this->hasMany('PayPeriods', [
             'foreignKey' => 'business_id'
         ]);
+
+        $this->hasMany('BusinessesUsers', [
+            'foreignKey' => 'business_id'
+        ]);
+
         $this->belongsToMany('Users', [
             'foreignKey' => 'business_id',
             'targetForeignKey' => 'user_id',
