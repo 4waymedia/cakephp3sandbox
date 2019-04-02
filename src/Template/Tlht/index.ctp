@@ -14,6 +14,7 @@
     <ul class="side-nav">
         <li class="heading"><?php echo __('Actions') ?></li>
         <li><?php echo $this->Html->link(__('Importer'), ['controller'=>'Content','action' => 'index']) ?></li>
+        <li><a href="/businesses/">My Business</a></li>
         <li><a href="/accountPayments/">Expense Payments</a></li>
         <li><a href="/jobs/">Jobs</a></li>
         <li><a href="/payments/">Payments</a></li>

@@ -33,6 +33,7 @@ class Business extends Entity
      */
     protected $_accessible = [
         'user_id' => true,
+        'default_percentage' => true,
         'first_pay_period_date' => true,
         'business_name' => true,
         'phone_number' => true,

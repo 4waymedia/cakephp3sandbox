@@ -38,7 +38,7 @@ class TlhtController extends AppController
         if (isset($user['role']) && $user['role'] === 'Admin') {
             $this->Auth->allow(['*']);
         }
-        if (isset($user['role']) && $user['role'] === 'Manager') {
+        if (isset($user['role']) && in_array($user['role'], array('Manager', 'Admin'))) {
             $this->Auth->allow(['setup']);
         }
     }
@@ -75,15 +75,16 @@ class TlhtController extends AppController
     {
 // Check Jobs
         $this->loadModel('Jobs');
+
         $first_job = $this->Jobs->find('all', [
             'conditions' => ['Jobs.appointment_date IS NOT NULL'],
-            'order' => ['Jobs.id' => 'ASC']
+            'order' => ['Jobs.appointment_date' => 'ASC']
         ])->first();
         $jobs['first'] = $first_job->toArray();
 
         $last_job = $this->Jobs->find('all', [
             'conditions' => ['Jobs.appointment_date IS NOT NULL'],
-            'order' => ['Jobs.id' => 'DESC']
+            'order' => ['Jobs.appointment_date' => 'DESC']
         ])->first();
         $jobs['last'] = $last_job->toArray();
         $jobs['count'] = $this->Jobs->find('all')->count();
@@ -103,7 +104,7 @@ class TlhtController extends AppController
         $payments['last'] = $last_payment->toArray();
         $payments['count'] = $this->Payments->find('all')->count();
 
-        $this->set(compact('payments'));
+        $this->set(compact('payments', 'jobs'));
     }
 
     public function setup(){

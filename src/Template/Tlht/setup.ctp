@@ -21,6 +21,7 @@
         echo $this->Form->control('business_name');
         echo $this->Form->control('address_1');
         echo $this->Form->control('address_2');
+        echo $this->Form->control('default_percentage');
         echo $this->Form->control('first_pay_period_date',['type'=>'date']);
         ?>
     </fieldset>
