@@ -34,7 +34,7 @@ foreach($technicians as $technician => $tech){
 <nav class="large-2 medium-3 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?php echo __('Actions'); ?></li>
-        <li><?= $this->Html->link(__('Import'), ['controller'=>'content','action' => 'index']) ?></li>
+        <li><?php echo $this->Html->link(__('Import'), ['controller'=>'content','action' => 'index']) ?></li>
         <li><?php echo $this->Html->link(__('New Job'), ['action' => 'add']); ?></li>
     </ul>
 </nav>

@@ -12,7 +12,30 @@
 /* -----------------------------------------
    Shared Styles
 ----------------------------------------- */
+.box{
+    position: relative;
+    margin: 20px 0;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #eee;
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+}
+h3.box-title{
+    margin-top:10px;
+}
 
+.box .box-header .box-title span {
+    position: relative;
+    left: 5px;
+    color: #8c92a3;
+    font-family: "Montserrat Light", sans-serif;
+    top: 7px;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
 
 /* -----------------------------------------

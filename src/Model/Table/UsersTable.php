@@ -47,6 +47,9 @@ class UsersTable extends Table
         $this->hasOne('Roles', [
             'foreignKey' => 'user_id'
         ]);
+        $this->hasOne('BusinessesUsers', [
+            'foreignKey' => 'user_id'
+        ]);
     }
 
     /**

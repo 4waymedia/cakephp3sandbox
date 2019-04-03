@@ -1,1 +1,1 @@
-<div id="<?= $key ?>-message"><?= $message; ?></div>
+<div id="<?php echo $key ?>-message"><?php echo $message; ?></div>

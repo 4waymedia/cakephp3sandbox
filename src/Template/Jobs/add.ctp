@@ -15,7 +15,7 @@
 <div class="jobs form large-9 medium-8 columns content">
     <?php echo $this->Form->create($job); ?>
     <fieldset>
-        <legend><?= __('Add Job'); ?></legend>
+        <legend><?php echo __('Add Job'); ?></legend>
         <?php
             echo $this->Form->control('order_created_time');
             echo $this->Form->control('service_order_id');

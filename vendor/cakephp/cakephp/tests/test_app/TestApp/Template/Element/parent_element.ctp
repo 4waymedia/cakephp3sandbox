@@ -1,2 +1,2 @@
 Parent Element.
-<?= $this->fetch('content'); ?>
+<?php echo $this->fetch('content'); ?>
