@@ -122,19 +122,23 @@ class UsersController extends AppController
     public function login()
     {
         if ($this->request->is('post')) {
+            $this->Auth->logout();
             $user = $this->Auth->identify();
 
             // get role name
             $user['role'] = $this->Users->Roles->get($user['role_id'])->name;
 
             if ($user) {
-
-                $this->Auth->setUser($user);
                 switch($user['role']){
-                    case 'SysADmin':
+                    case 'SysAdmin':
                     case 'Admin':
                         $BusinessesUsers = TableRegistry::get('BusinessesUsers');
-                        $user['business_id'] = $BusinessesUsers->find()->where(['user_id'=> $user['id']])->first()->toArray()['business_id'];
+                        $business = $BusinessesUsers->find()->where(['user_id'=> $user['id']])->first();
+
+                        if($business){
+                           $user['business_id'] = $business->business_id;
+                        }
+
                         break;
                     case 'Technician':
                         $this->Auth->setUser($user);
@@ -143,6 +147,7 @@ class UsersController extends AppController
                 }
 
                 $this->Auth->setUser($user);
+
                 return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Flash->error('Your username or password is incorrect.');
