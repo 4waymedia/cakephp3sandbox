@@ -20,7 +20,7 @@ class BusinessesController extends AppController
      */
     public function index()
     {
-
+       
         $query = $this->Businesses->find('all')->where(['user_id' => $this->Auth->user('id')])->contain(['PayPeriods']);
         $businesses = $this->paginate($query);
 

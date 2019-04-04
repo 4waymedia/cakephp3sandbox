@@ -3,11 +3,14 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Business[]|\Cake\Collection\CollectionInterface $businesses
  */
+
+$this->assign('title', 'My Business');
+
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?php echo __('Actions') ?></li>
-        <li><?php echo $this->Html->link(__('List Pay Periods'), ['controller' => 'PayPeriods', 'action' => 'index']) ?></li>
+        <li><?php echo $this->Html->link(__('List Pay Periods'), ['controller' => 'PayPeriods', 'action' => 'index']); ?></li>
     </ul>
 </nav>
 <div class="businesses index large-9 medium-8 columns content">
@@ -45,6 +48,9 @@
     </table>
     <div>
         <h4>Staff</h4>
+    <?php if(isset($staff)):?>
+
+
 
         <?php
         echo $this->Html->tag('table', null, array('class'=>'table-striped table'));
@@ -59,5 +65,10 @@
             }
 
             echo $this->Html->tag('/table');?>
+
+    <?php else : ?>
+        <strong>Technicians are added Automatically when you import Jobs.</strong>
+    <?php endif; ?>
     </div>
+
 </div>
