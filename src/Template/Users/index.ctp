@@ -18,6 +18,7 @@
                 <th scope="col"><?php echo $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?php echo $this->Paginator->sort('email') ?></th>
                 <th scope="col"><?php echo $this->Paginator->sort('password') ?></th>
+                <th scope="col"><?php echo $this->Paginator->sort('role_id') ?></th>
                 <th scope="col"><?php echo $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?php echo $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?php echo __('Actions') ?></th>
@@ -29,6 +30,7 @@
                 <td><?php echo $this->Number->format($user->id) ?></td>
                 <td><?php echo h($user->email) ?></td>
                 <td><?php echo h($user->password) ?></td>
+                <td><?php echo h($roles[$user->role_id]) ?></td>
                 <td><?php echo h($user->created) ?></td>
                 <td><?php echo h($user->modified) ?></td>
                 <td class="actions">

@@ -25,6 +25,7 @@
         <?php
             echo $this->Form->control('email');
             echo $this->Form->control('password');
+        echo $this->Form->control('role_id');
         ?>
     </fieldset>
     <?php echo $this->Form->button(__('Submit')) ?>

@@ -16,7 +16,9 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+
 use Cake\ORM\TableRegistry;
+use Cake\Datasource\ConnectionManager;
 
 
 /**
@@ -41,6 +43,7 @@ class AppController extends Controller
      */
     public function initialize()
     {
+
         parent::initialize();
 
         $this->loadComponent('Paginator');
