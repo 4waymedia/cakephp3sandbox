@@ -29,6 +29,10 @@
             <td><?php echo $this->Number->format($user->id) ?></td>
         </tr>
         <tr>
+            <th scope="row"><?php echo __('Role') ?></th>
+            <td><?php echo h($user->role_id) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?php echo __('Created') ?></th>
             <td><?php echo h($user->created) ?></td>
         </tr>

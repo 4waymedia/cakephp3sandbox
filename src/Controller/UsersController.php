@@ -35,8 +35,9 @@ class UsersController extends AppController
      */
     public function index()
     {
+        $roles = $this->Users->Roles->find('list')->toArray();
         $users = $this->paginate($this->Users);
-        $this->set(compact('users'));
+        $this->set(compact('users', 'roles'));
     }
 
     /**
@@ -64,7 +65,7 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-            $users = $this->Users->patchEntity($user, $this->request->getData());
+            $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
@@ -90,6 +91,7 @@ class UsersController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
+
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
@@ -97,7 +99,10 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $this->set(compact('user'));
+
+        $roles = $this->Users->Roles->find('list')->toArray();
+
+        $this->set(compact('user', 'roles'));
     }
 
     /**
@@ -110,7 +115,8 @@ class UsersController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $users = $this->Users->get($id);
+        $user = $this->Users->get($id);
+
         if ($this->Users->delete($user)) {
             $this->Flash->success(__('The user has been deleted.'));
         } else {
