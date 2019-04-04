@@ -64,6 +64,11 @@ class TlhtController extends AppController
 
         $payPeriods = $this->Amazon->getCurrentPayPeriod($business_id);
 
+        if(!$payPeriods){
+            $this->Flash->notice(__('You must setup your business before using the Dashboard.'));
+            $this->redirect(['controller'=>'tlht', 'action'=>'setup']);
+        }
+
         //$passedArgs = $this->request->getParam('pass');
 
         $jobs = $this->Paginator->paginate($this->Jobs->find()->contain(['Payments','AccountPayments']), $this->paginate);

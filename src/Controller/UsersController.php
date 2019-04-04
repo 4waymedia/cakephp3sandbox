@@ -25,7 +25,7 @@ class UsersController extends AppController
     public function initialize()
     {
         parent::initialize();
-        $this->Auth->allow(['logout', 'register', 'login']);
+        $this->Auth->allow(['logout', 'register', 'login', 'join']);
     }
 
     /**
@@ -75,6 +75,7 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
+
     /**
      * Edit method
      *
@@ -121,6 +122,7 @@ class UsersController extends AppController
 
     public function login()
     {
+        $this->viewBuilder()->setLayout('public');
         if ($this->request->is('post')) {
             $this->Auth->logout();
             $user = $this->Auth->identify();
@@ -162,7 +164,33 @@ class UsersController extends AppController
 
 
     public function register(){
+        $this->viewBuilder()->setLayout('public');
+        $user = $this->Users->newEntity();
+        if ($this->request->is('post')) {
 
+            // Set Role to Admin for business owner
+            $user['role_id'] = 3;
+            $users = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
+
+                // Save Business
+                $business = $this->request->getData('Business');
+                $business['user_id'] = $user->id;
+                // Now Save Business info
+
+                $this->Businesses = TableRegistry::get('Businesses');
+                $business_entity = $this->Businesses->newEntity();
+                $new_business = $this->Businesses->patchEntity($business_entity, $business);
+
+                $this->Businesses->save($new_business);
+
+                $this->Flash->success(__('The user has been saved.'));
+
+                return $this->redirect(['controller'=>'users', 'action' => 'login']);
+            }
+            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+        }
+        $this->set(compact('user'));
     }
 
     public function verify_setup(){

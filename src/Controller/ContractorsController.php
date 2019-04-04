@@ -58,6 +58,10 @@ class ContractorsController extends AppController
         $contractor = $this->Contractors->newEntity();
         if ($this->request->is('post')) {
             $contractor = $this->Contractors->patchEntity($contractor, $this->request->getData());
+
+            // Use the Business ID based from Auth.... This Allows a Admin to Ghost as a business to assist
+            $contractor['business_id'] = $this->Auth->user('business_id');
+
             if ($this->Contractors->save($contractor)) {
                 $this->Flash->success(__('The contractor has been saved.'));
 

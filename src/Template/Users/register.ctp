@@ -6,7 +6,7 @@
 ?>
 
 <div class="large-3 medium-4 columns" id="actions-sidebar">
-<p>By filling out and submitting this form, you accept our terms and conditions. Furthermore, you </p>
+<p>By filling out and submitting this form, you accept our terms and conditions. Furthermore, you agree to use our service morally.</p>
 </div>
 <div class="users form large-9 medium-8 columns content">
     <h1>Register a NEW account</h1>
