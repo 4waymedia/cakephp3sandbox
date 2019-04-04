@@ -48,7 +48,6 @@ use Cake\Utility\Security;
  * Application variables
  * */
 
-
 /**
  * Uncomment block of code below if you want to use `.env` file during development.
  * You should copy `config/.env.default to `config/.env` and set/modify the
@@ -81,12 +80,13 @@ try {
     exit($e->getMessage() . "\n");
 }
 
+
 /*
  * Load an environment local configuration file.
  * You can use a file like app_local.php to provide local overrides to your
  * shared configuration.
  */
-//Configure::load('app_local', 'default');
+Configure::load('app_local', 'default', true);
 
 /*
  * When debug = true the metadata cache should only last
@@ -157,12 +157,16 @@ if (!Configure::read('App.fullBaseUrl')) {
     unset($httpHost, $s);
 }
 
+
+
 Cache::setConfig(Configure::consume('Cache'));
 ConnectionManager::setConfig(Configure::consume('Datasources'));
 Email::setConfigTransport(Configure::consume('EmailTransport'));
 Email::setConfig(Configure::consume('Email'));
 Log::setConfig(Configure::consume('Log'));
 Security::setSalt(Configure::consume('Security.salt'));
+
+
 
 /*
  * The default crypto extension in 3.0 is OpenSSL.
@@ -214,3 +218,5 @@ Type::build('timestamp')
 
 Plugin::load('CsvView', ['bootstrap' => true, 'routes' => true]);
 Plugin::load('Importer', ['bootstrap' => true, 'routes' => true]);
+
+
