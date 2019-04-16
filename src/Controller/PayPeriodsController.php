@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * PayPeriods Controller
@@ -45,7 +46,31 @@ class PayPeriodsController extends AppController
             'contain' => []
         ]);
 
-        $this->set('payPeriod', $payPeriod);
+        $business_id = $this->Auth->user('business_id');
+
+        $period_start = \Cake\Database\Type::build('date')->marshal($payPeriod->start_date)->format('Y-m-d');
+        $period_end = \Cake\Database\Type::build('date')->marshal($payPeriod->end_date)->format('Y-m-d');
+
+        // Get Jobs from date range
+        $this->Jobs = TableRegistry::getTableLocator()->get('Jobs');
+
+
+        $query = [
+            'limit' => 50,
+            'order' => [
+                'appointment_date' => 'DESC'
+            ]
+        ];
+
+        $jobs = $this->Jobs->find('all')
+            ->where(['business_id'=>$business_id])
+            ->Where([
+                'AND' => [['appointment_date >=' => $period_start], ['appointment_date <=' => $period_end]]
+            ])
+            ->contain(['Payments','AccountPayments'])
+            ->toArray();
+
+        $this->set(compact('payPeriod', 'jobs'));
     }
 
     /**

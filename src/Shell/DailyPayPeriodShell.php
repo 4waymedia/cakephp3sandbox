@@ -9,6 +9,12 @@ use Cake\Console\Shell;
 class DailyPayPeriodShell extends Shell
 {
 
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadModel('Jobs');
+    }
+
     /**
      * Manage the available sub-commands along with their arguments and help
      *
@@ -19,6 +25,11 @@ class DailyPayPeriodShell extends Shell
     public function getOptionParser()
     {
         $parser = parent::getOptionParser();
+
+        $parser->addOptions([
+            'dry' => ['short' => 'd', 'help' => 'Dry run'],
+            'process' => ['short' => 'p', 'help' => 'Process Pay Period']
+        ]);
 
         return $parser;
     }
@@ -31,24 +42,39 @@ class DailyPayPeriodShell extends Shell
     public function main()
     {
 
-        // get current PayPeriod by todays Date
 
-        // if NONE, create new pay period
-
-            // Tally up last pay period
-
-            // Send notice to Admin with Pay Period stats [completed, pending, payed, not payed etc]
-
-        // for PayPeriod get all jobs within dates
-
-        // Create NEW stats
-
-        // compare changes between entity stats, and NEW stats
-
-        // save stats to PayPeriod
-
-        // notify admin of changes
 
         $this->out($this->OptionParser->help());
+    }
+
+    public function processPayPeriod(){
+
+        // Count Jobs Task
+
+        // Jobs Completed Task
+
+        // Jobs Cancelled Task
+
+        // Jobs Pending
+
+        // Count Contractors Used Task
+
+        // Jobs Profitability Task
+
+    }
+
+    public function processDaily(){
+
+        // Get all business IDs for processing
+
+        // Get Active Pay Period foreach Business
+
+        // Process PayPeriod() foreach Business
+
+        // if last DAY of PayPeriod -> Create NEW PayPeriod
+            // Tally up last pay period
+            // Notify Admin of Business with report
+            // Send notice to Admin with Pay Period stats [completed, pending, payed, not payed etc]
+
     }
 }

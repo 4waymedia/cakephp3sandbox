@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
 
 /**
  * Contractors Controller
@@ -120,5 +121,14 @@ class ContractorsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function invite($id = null)
+    {
+        // Invite contractor based on Email or phone
+        // $twillio_sid = Configure::read('twillio_sid');
+        $this->Flash->error(__('Invitation is a FEATURE not currently available.'));
+        return $this->redirect(['action' => 'index']);
+
     }
 }

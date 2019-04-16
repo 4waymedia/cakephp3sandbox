@@ -8,6 +8,8 @@ use Cake\ORM\TableRegistry;
 
 class ContentComponent extends Component
 {
+    public $components = array('Auth');
+
     var $downloadData = [
         'Jobs' => array(
             'fields'=>['*'],
@@ -29,6 +31,7 @@ class ContentComponent extends Component
             // Model is not allowed
             return array('error'=>'Model not allowed');
         }
+
         // Load table
         $theTable = TableRegistry::getTableLocator()->get($model);
 

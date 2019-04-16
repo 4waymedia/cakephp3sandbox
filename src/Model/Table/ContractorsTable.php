@@ -65,9 +65,12 @@ class ContractorsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->integer('deduction_percentage')
+            ->allowEmpty('id', 'create');
+
+        $validator
             ->scalar('first_name')
-            ->maxLength('first_name', 30)
-            ->allowEmpty('first_name');
+            ->naturalNumber('deduction_percent');
 
         $validator
             ->scalar('last_name')

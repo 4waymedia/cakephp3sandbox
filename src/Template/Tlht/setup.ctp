@@ -24,7 +24,13 @@
         echo $this->Form->control('city');
         echo $this->Form->control('state');
         echo $this->Form->control('default_percentage');
-        echo $this->Form->control('first_pay_period_date',['type'=>'date']);
+        if(!isset($businesses->first_pay_period_date)){
+            echo $this->Form->control('first_pay_period_date',['type'=>'date']);
+        } else {
+
+            echo $this->Form->control('first_pay_period_date', ['disabled' => 'disabled']);
+        }
+
         ?>
     </fieldset>
     <?php echo $this->Form->button(__('Submit')) ?>

@@ -53,19 +53,12 @@ class TlhtController extends AppController
     {
         $this->loadModel('Jobs');
 
-        if($this->request->getParam('pass'))
-        {
-            $this->paginate['condition'] = [
-
-            ];
-        }
-
         $business_id = $this->Auth->user('business_id');
 
         $payPeriods = $this->Amazon->getCurrentPayPeriod($business_id);
 
         if(!$payPeriods){
-            $this->Flash->notice(__('You must setup your business before using the Dashboard.'));
+            $this->Flash->notice(__('You must setup your business Pay Periods before using the Dashboard.'));
             $this->redirect(['controller'=>'tlht', 'action'=>'setup']);
         }
 
@@ -143,14 +136,15 @@ class TlhtController extends AppController
 
         if ($this->request->is(['patch', 'post', 'put'])) {
 
-
             $businesses = $this->Businesses->patchEntity($businesses, $this->request->getData());
 
             $userBusiness = $this->UserBusinesses->patchEntity($userBusiness, $this->request->getData());
 
             if ($this->Businesses->save($businesses)) {
 
-                if(isset($userBusiness->first_pay_period_date)){
+                $this->request->getSession()->write('Auth.User.business_id', $businesses->id);
+
+                if(isset($userBusiness->first_pay_period_date) && $userBusiness->isDirty('first_pay_period_date')){
                     // Convert to datetime
                     $start_date = \Cake\Database\Type::build('date')->marshal($userBusiness->first_pay_period_date);
 

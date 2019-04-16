@@ -9,6 +9,11 @@
         color:red;
         font-weight: bold;
     }
+    .red{
+        background-color: #ffd2d2 !important;
+        border-top: 2px solid red;
+    }
+
 </style>
 <nav class="large-2 medium-3 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -83,9 +88,19 @@
         <tbody>
         <?php foreach ($jobs as $job) {
 
+            // Check for payment on completed job
+            if($job->job_status == 'COMPLETED'){
+                $row_class = count($job['payments']) < 1 ? 'red': '';
+            }
+
+            if($job->id == 2874){
+
+            }
+
+
             $profit = 0;
             ?>
-            <tr>
+            <tr class="<?php echo $row_class;?>" id="job-id<?php echo $job->id;?>">
                 <td><?php echo h($job->appointment_date); ?></td>
                 <td><?php echo explode('-', $job->technician)[0]; ?></td>
                 <td><?php echo $job->service_order_id; ?></td>

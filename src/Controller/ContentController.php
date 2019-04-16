@@ -50,6 +50,15 @@ class ContentController extends AppController
     public function index(){
         $content_models = $this->downloadData;
 
+        // Check for Business
+        $business_id = $this->Auth->user('business_id');
+        if(empty($business)){
+            $this->Flash->set('You must setup your Business to Import', [
+                'element' => 'error'
+            ]);
+            return $this->redirect(['controller' => 'tlht', 'action' => 'setup']);
+        }
+
         // Prepare for Model for download
         if ($this->request->is('post')) {
 

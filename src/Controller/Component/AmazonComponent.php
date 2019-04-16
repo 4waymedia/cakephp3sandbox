@@ -9,6 +9,9 @@ use App\Model\Entity\PayPeriod;
 
 class AmazonComponent extends Component
 {
+
+    public $components = array('Auth');
+
     // Generate all pay periods from date
 
     /** Generates from the start date passed in
@@ -18,6 +21,8 @@ class AmazonComponent extends Component
     public function generateBusinessPayPeriods($business_id, $start_date, $create = false){
         $periods = array();
         $timezone = new \DateTimeZone('America/Los_Angeles');
+
+        $business_id = $this->Auth->user('business_id');
 
         // check if date is a Monday
 
