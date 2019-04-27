@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Businesses Controller
@@ -13,6 +14,22 @@ use App\Controller\AppController;
 class BusinessesController extends AppController
 {
 
+    public $uses = ['Role'];
+    /**
+     * Initialization hook method.
+     *
+     * Use this method to add common initialization code like loading components.
+     *
+     * e.g. `$this->loadComponent('Security');`
+     *
+     * @return void
+     */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->Auth->allow(['logout', 'register', 'login', 'join']);
+    }
+
     /**
      * Index method
      *
@@ -21,11 +38,13 @@ class BusinessesController extends AppController
     public function index()
     {
        
-        $query = $this->Businesses->find('all')->where(['user_id' => $this->Auth->user('id')])->contain(['PayPeriods']);
+        $query = $this->Businesses->find('all')->where(['user_id' => $this->Auth->user('id')])->contain(['PayPeriods', 'Contractors']);
         $businesses = $this->paginate($query);
 
+        $this->Roles = TableRegistry::getTableLocator()->get('Roles');
+        $roles = $this->Roles->find('list')->toArray();
 
-        $this->set(compact('businesses'));
+        $this->set(compact('businesses', 'roles'));
     }
 
     /**

@@ -3,6 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\PayPeriod[]|\Cake\Collection\CollectionInterface $payPeriods
  */
+
 ?>
 <nav class="large-2 medium-3 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -15,6 +16,7 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
+                <th>Process</th>
                 <th scope="col"><?php echo $this->Paginator->sort('start_date') ?></th>
                 <th scope="col"><?php echo $this->Paginator->sort('end_date') ?></th>
                 <th scope="col"><?php echo $this->Paginator->sort('contractors_used') ?></th>
@@ -27,8 +29,12 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($payPeriods as $payPeriod): ?>
-            <tr>
+            <?php foreach ($payPeriods as $payPeriod):
+                $class = ($payPeriod->id == $pay_period_id) ? 'updated': '';
+
+                ?>
+            <tr class="<?php echo $class; ?>">
+                <td><?php echo $this->Html->link(__('>>>RUN>>>'), ['action' => 'generateStats', $payPeriod->id], ['class'=>'']) ?></td>
                 <td><?php echo h($payPeriod->start_date) ?></td>
                 <td><?php echo h($payPeriod->end_date) ?></td>
                 <td><?php echo $this->Number->format($payPeriod->contractors_used) ?></td>

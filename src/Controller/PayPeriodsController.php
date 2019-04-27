@@ -3,6 +3,11 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
+use Cake\I18n\Time;
+use Cake\Cache\Cache;
+
+// use Cake\Network\Session\DatabaseSession;
+
 
 /**
  * PayPeriods Controller
@@ -17,6 +22,7 @@ class PayPeriodsController extends AppController
     {
         parent::initialize();
         $this->loadModel('PayPeriods'); //<----- HERE
+        $this->loadComponent('Accounting');
     }
 
     /**
@@ -24,8 +30,12 @@ class PayPeriodsController extends AppController
      *
      * @return \Cake\Http\Response|void
      */
-    public function index()
+    public function index($id = null)
     {
+        $session = $this->getRequest()->getSession();
+        $id = $session->read('App.Processing.lastPayPeriod');
+
+        $this->set('pay_period_id', $id);
 
         $query = $this->PayPeriods->find('all')->order(['start_date' => 'DESC'])->where(['business_id' => $this->Auth->user('business_id')]);
         $payPeriods = $this->paginate($query);
@@ -140,6 +150,26 @@ class PayPeriodsController extends AppController
     public function generate(){
 
         // if post, generate PayPeriods
+
+    }
+
+    public function generateStats($id){
+        $payPeriod = $this->PayPeriods->get($id);
+        $stats = $this->Accounting->generatePayPeriodStats($id);
+
+        $updatedpayPeriod = $this->PayPeriods->patchEntity($payPeriod, $stats);
+
+        if ($error = $this->PayPeriods->save($updatedpayPeriod)) {
+            $this->Flash->success(__('Pay period '. $payPeriod->start_date . ' - ' . $payPeriod->end_date . ' Processed'));
+            $session = $this->getRequest()->getSession();
+            $session->write('App.Processing.lastPayPeriod', $id);
+            return $this->redirect($this->referer());
+        } else {
+debug($updatedpayPeriod->getErrors());
+            $this->Flash->error(__('The pay period was not calculated'));
+            die();
+        }
+
 
     }
 }

@@ -9,19 +9,21 @@ echo $this->Html->tableHeaders(
     array(),
     array('class'=>''));
 
-foreach($import_results as $entity){
+foreach($import_results as $file) {
 
-    echo $this->Html->tableCells([
-        $entity->transaction_type,
-        $entity->order_id,
-        $entity->sku,
-        $entity->payment_type,
-        $entity->amount,
-        $entity->payment_details,
-        $entity->product_title,
-        $entity->errors,
-        ''
-    ]);
+    foreach ($file as $entity){
+        echo $this->Html->tableCells([
+            $entity->transaction_type,
+            $entity->order_id,
+            $entity->sku,
+            $entity->payment_type,
+            $entity->amount,
+            $entity->payment_details,
+            $entity->product_title,
+            $entity->errors,
+            ''
+        ]);
+    }
 
 }
 

@@ -61,6 +61,16 @@ class AccountPaymentsController extends AppController
             return $this->redirect(['action'=>'index']);
         }
 
+        $accounts = $this->AccountPayments->Accounts->find('list', ['limit' => 200])
+            ->where(['business_id'=>$this->Auth->user('business_id')])
+            ->toArray();
+
+        if(empty($accounts)){
+            $this->Flash->error(__('You must create a Payment Account before logging payments.'));
+
+            return $this->redirect(['controller'=>'accounts', 'action' => 'add']);
+        }
+
         $accountPayment = $this->AccountPayments->newEntity();
         $job = $this->AccountPayments->Jobs->get($id, [
             'contain' => [
@@ -86,7 +96,7 @@ class AccountPaymentsController extends AppController
         $paymentsMade = $this->AccountPayments->find('all', [
             'conditions' => ['job_id'=>$id]
             ])->toArray();
-        $accounts = $this->AccountPayments->Accounts->find('list', ['limit' => 200]);
+
         $contractors = $this->AccountPayments->Contractors->find('list', ['limit' => 200, 'keyField' => 'id',
             'valueField' => 'technician_id'])->toArray();
 

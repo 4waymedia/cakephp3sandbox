@@ -20,6 +20,10 @@ class AccountsController extends AppController
      */
     public function index()
     {
+
+        // Set paginate for business_id
+        $this->paginate['conditions']['business_id'] = $this->Auth->user('business_id');
+
         $accounts = $this->paginate($this->Accounts);
 
         $this->set(compact('accounts'));
@@ -49,8 +53,10 @@ class AccountsController extends AppController
     public function add()
     {
         $account = $this->Accounts->newEntity();
+        $account->business_id = $this->Auth->user('business_id');
         if ($this->request->is('post')) {
             $account = $this->Accounts->patchEntity($account, $this->request->getData());
+
             if ($this->Accounts->save($account)) {
                 $this->Flash->success(__('The account has been saved.'));
 

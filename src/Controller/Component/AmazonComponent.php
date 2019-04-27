@@ -114,6 +114,8 @@ class AmazonComponent extends Component
 
         $periods = $this->PayPeriods->find()
             ->order(['PayPeriods.start_date' => 'DESC'])
+            ->where(['PayPeriods.start_date <' => $today])
+            ->where(['PayPeriods.end_date >' => $today])
             ->where(['PayPeriods.status' => 'active']);
 
         return $periods->toList();

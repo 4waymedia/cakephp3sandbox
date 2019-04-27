@@ -23,7 +23,7 @@ class ContractorsController extends AppController
     {
 
         $this->loadComponent('Paginator');
-        $contractors = $this->Paginator->paginate($this->Contractors->find());
+        $contractors = $this->Paginator->paginate($this->Contractors->find()->where(['business_id' => $this->Auth->user('business_id')]));
         $roles = $this->Contractors->Roles->find('list', ['limit' => 200])->toArray();
         $this->set(compact('contractors', 'roles'));
 

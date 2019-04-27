@@ -43,6 +43,7 @@
             <!-- modal -->
             <div class="row">
                 <div class="large-3 columns">
+
                     <p><strong><?php echo $payPeriods[0]->start_date . ' - ' . $payPeriods[0]->end_date; ?></strong> </p>
                     <p>These are your active Pay Periods. You can change the status if needed.</p>
                 </div>
@@ -87,16 +88,11 @@
         </thead>
         <tbody>
         <?php foreach ($jobs as $job) {
-
+            $row_class = '';
             // Check for payment on completed job
             if($job->job_status == 'COMPLETED'){
                 $row_class = count($job['payments']) < 1 ? 'red': '';
             }
-
-            if($job->id == 2874){
-
-            }
-
 
             $profit = 0;
             ?>

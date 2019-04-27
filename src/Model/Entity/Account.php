@@ -27,6 +27,7 @@ class Account extends Entity
     protected $_accessible = [
         'name' => true,
         'description' => true,
-        'account_payments' => true
+        'account_payments' => true,
+        'business_id' => true
     ];
 }
