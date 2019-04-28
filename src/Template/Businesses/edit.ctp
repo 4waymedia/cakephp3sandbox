@@ -25,7 +25,7 @@
     <fieldset>
         <legend><?= __('Edit Business') ?></legend>
         <?php
-            echo $this->Form->control('user_id');
+            echo $this->Form->hidden('user_id');
             echo $this->Form->hidden('first_pay_period_date');
             echo $this->Form->control('business_name');
             echo $this->Form->control('phone_number');
@@ -33,7 +33,7 @@
             echo $this->Form->control('address_2');
             echo $this->Form->control('city');
             echo $this->Form->control('state');
-            echo $this->Form->control('users._ids', ['options' => $users]);
+            echo $this->Form->control('default_percentage');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

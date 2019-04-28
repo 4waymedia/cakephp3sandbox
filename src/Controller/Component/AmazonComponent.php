@@ -21,15 +21,14 @@ class AmazonComponent extends Component
     public function generateBusinessPayPeriods($business_id, $start_date, $create = false){
         $periods = array();
         $timezone = new \DateTimeZone('America/Los_Angeles');
+        $today = new \DateTime('now', $timezone);
 
         $business_id = $this->Auth->user('business_id');
 
         // check if date is a Monday
-
-        // First Monday October 1, 2018 at 5pm
+        // First Monday
         $first_pay_start_date = new \DateTime($start_date, $timezone);
 
-        $today = new \DateTime('now', $timezone);
         $datecheck = clone $first_pay_start_date;
 
         while($datecheck < $today)

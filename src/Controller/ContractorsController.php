@@ -71,7 +71,10 @@ class ContractorsController extends AppController
             $this->Flash->error(__('The contractor could not be saved. Please, try again.'));
         }
 
-        $roles = $this->Contractors->Roles->find('list', ['limit' => 200]);
+        $roles = $this->Contractors->Roles->find('list', [
+            'limit' => 200,
+            'conditions' => ['name IN'=> ['Contractor','Assistant','Admin','Manager','Accountant']]
+        ]);
         $this->set(compact('roles', 'contractor'));
     }
 

@@ -110,6 +110,14 @@ class TlhtController extends AppController
 
         $this->UserBusinesses = TableRegistry::getTableLocator()->get('BusinessesUsers');
         $this->Businesses = TableRegistry::getTableLocator()->get('Businesses');
+        $this->PayPeriods = TableRegistry::getTableLocator()->get('PayPeriods');
+
+
+        // count PayPeriods
+        $count = $this->PayPeriods->find('all')
+            ->where(['business_id' => $this->Auth->user('business_id')])->count();
+
+        $reset_payperiods = ($count === 0);
 
         $businesses = $this->Businesses->find('all', [
             'conditions' => ['user_id'=>$user_id]
@@ -148,7 +156,11 @@ class TlhtController extends AppController
                     // Convert to datetime
                     $start_date = \Cake\Database\Type::build('date')->marshal($userBusiness->first_pay_period_date);
 
+                    //
                     $this->Amazon->generateBusinessPayPeriods($userBusiness->business_id, $start_date, true);
+
+                } elseif($count){
+
                 }
                 $this->Flash->success(__('The have created your Business'));
                 $this->redirect(['controller'=>'businesses', 'action'=>'index']);
@@ -158,7 +170,7 @@ class TlhtController extends AppController
             }
         }
 
-        $this->set(compact('businesses','userBusiness'));
+        $this->set(compact('businesses','userBusiness', 'reset_payperiods'));
     }
 
 }

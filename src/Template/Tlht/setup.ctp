@@ -24,7 +24,7 @@
         echo $this->Form->control('city');
         echo $this->Form->control('state');
         echo $this->Form->control('default_percentage');
-        if(!isset($businesses->first_pay_period_date)){
+        if(!isset($businesses->first_pay_period_date) || $reset_payperiods){
             echo $this->Form->control('first_pay_period_date',['type'=>'date']);
         } else {
 

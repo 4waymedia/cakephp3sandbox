@@ -8,6 +8,8 @@ use Cake\ORM\TableRegistry;
 
 class AccountingComponent extends Component
 {
+    public $components = array('Auth');
+
     public function generatePayPeriodStats($id){
 
         $this->PayPeriods = TableRegistry::getTableLocator()->get('PayPeriods');
@@ -55,6 +57,16 @@ class AccountingComponent extends Component
         $counts['calculated'] = true;
         return $counts;
 
+    }
+
+    public function getCurrentPayPeriod(){
+
+
+
+        $this->PayPeriods->find('all')
+            ->order(['start_date' => 'DESC'])
+            ->where(['business_id' => $this->Auth->user('business_id')])
+            ->first();
     }
 
 }

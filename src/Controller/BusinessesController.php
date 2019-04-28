@@ -105,8 +105,8 @@ class BusinessesController extends AppController
             }
             $this->Flash->error(__('The business could not be saved. Please, try again.'));
         }
-        $users = $this->Businesses->Users->find('list', ['limit' => 200]);
-        $this->set(compact('business', 'users'));
+
+        $this->set(compact('business'));
     }
 
     /**

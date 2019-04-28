@@ -165,9 +165,7 @@ class PayPeriodsController extends AppController
             $session->write('App.Processing.lastPayPeriod', $id);
             return $this->redirect($this->referer());
         } else {
-debug($updatedpayPeriod->getErrors());
             $this->Flash->error(__('The pay period was not calculated'));
-            die();
         }
 
 
