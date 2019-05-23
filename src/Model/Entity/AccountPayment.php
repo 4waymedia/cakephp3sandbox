@@ -38,7 +38,7 @@ class AccountPayment extends Entity
         'amount' => true,
         'name' => true,
         'account' => true,
-        'contractor' => true,
+        'technician_id' => true,
         'job' => true
     ];
 }

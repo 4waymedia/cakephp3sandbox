@@ -208,7 +208,7 @@ class ContentComponent extends Component
                 // Create NEW contractor
                 $contractor = $ContractorsTable->newEntity();
                 $contractor->first_name = $split[0];
-                $contractor->last_name = explode("-", $split[1])[0];;
+                $contractor->last_name = explode("-", $split[1])[0];
 
                 $contractor->technician_id = $split[1];
                 $contractor->role_id = 1;

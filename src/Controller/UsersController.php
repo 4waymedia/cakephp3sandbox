@@ -25,6 +25,7 @@ class UsersController extends AppController
     public function initialize()
     {
         parent::initialize();
+        $this->loadComponent('Amazon');
         $this->Auth->allow(['logout', 'register', 'login', 'join']);
     }
 
@@ -156,6 +157,8 @@ class UsersController extends AppController
 
                 $this->Auth->setUser($user);
 
+
+
                 return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Flash->error('Your username or password is incorrect.');
@@ -206,7 +209,7 @@ class UsersController extends AppController
 
             // check if first_pay_period_date is set
 
-        // redirect
+        // return True or Redirect to Finish Setup
 
     }
 }

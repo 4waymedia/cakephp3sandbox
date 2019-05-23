@@ -16,6 +16,8 @@ class AccountPaymentsController extends AppController
     {
         parent::initialize();
         $this->Auth->allow(['display', 'view', 'index']);
+
+        $this->loadComponent('Accounting');
     }
     /**
      * Index method
@@ -50,7 +52,9 @@ class AccountPaymentsController extends AppController
     }
 
     /**
-     * Add method
+     * Add Payment by JOB ID
+     *
+     * @param id is the Job ID
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
@@ -61,8 +65,14 @@ class AccountPaymentsController extends AppController
             return $this->redirect(['action'=>'index']);
         }
 
+        // Get business_id for active business account
+        $business_id = $this->Auth->user('business_id');
+
+        // load business info
+        $business = $this->AccountPayments->Businesses->find()->where(['id'=>$business_id])->first();
+
         $accounts = $this->AccountPayments->Accounts->find('list', ['limit' => 200])
-            ->where(['business_id'=>$this->Auth->user('business_id')])
+            ->where(['business_id'=>$business_id])
             ->toArray();
 
         if(empty($accounts)){
@@ -72,18 +82,32 @@ class AccountPaymentsController extends AppController
         }
 
         $accountPayment = $this->AccountPayments->newEntity();
+
         $job = $this->AccountPayments->Jobs->get($id, [
             'contain' => [
-                'Payments',
-                'Technicians'=>['fields'=>['id','technician_id']]
+                'Payments'
             ]
         ])->toArray();
 
-        if ($this->request->is('post')) {
+        if(empty($job['payments'])){
+            $this->Flash->error(__('No Payment file for this Job. Unable to calculate amounts.'));
 
+            return $this->redirect($this->referer());
+        }
+
+        // Get PayPeriod for Job
+        $payPeriod = $this->Accounting->getPayPeriodByJobId($job['id']);
+
+        if(isset($payPeriod['id'])){
+            $accountPayment->pay_period_id = $payPeriod['id'];
+        } else {
+            $this->Flash->error(__('No Pay Period set for this Job.'));
+            return $this->redirect($this->referer());
+        }
+
+        if ($this->request->is('post')) {
             $accountPayment = $this->AccountPayments->patchEntity($accountPayment, $this->request->getData());
             $accountPayment->order_id = $job['service_order_id'];
-
 
             if ($this->AccountPayments->save($accountPayment)) {
                 $this->Flash->success(__('The account payment has been saved.'));
@@ -98,7 +122,10 @@ class AccountPaymentsController extends AppController
             ])->toArray();
 
         $contractors = $this->AccountPayments->Contractors->find('list', ['limit' => 200, 'keyField' => 'id',
-            'valueField' => 'technician_id'])->toArray();
+            'valueField' => function ($row) {
+                return $row['first_name'] . ' ' . $row['last_name'];
+            }
+        ])->toArray();
 
         $this->set(compact('accountPayment', 'accounts', 'contractors', 'job','paymentsMade'));
     }

@@ -5,6 +5,7 @@ use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\Time;
 use Cake\Cache\Cache;
+use Cake\Utility\Hash;
 
 // use Cake\Network\Session\DatabaseSession;
 
@@ -18,9 +19,18 @@ use Cake\Cache\Cache;
  */
 class PayPeriodsController extends AppController
 {
+
+    public $paginate = [
+        'limit'=> 100,
+        'order' => [
+            'start_date' => 'desc'
+            ]
+    ];
+
     public function initialize()
     {
         parent::initialize();
+        $this->loadComponent('Paginator');
         $this->loadModel('PayPeriods'); //<----- HERE
         $this->loadComponent('Accounting');
     }
@@ -37,7 +47,7 @@ class PayPeriodsController extends AppController
 
         $this->set('pay_period_id', $id);
 
-        $query = $this->PayPeriods->find('all')->order(['start_date' => 'DESC'])->where(['business_id' => $this->Auth->user('business_id')]);
+        $query = $this->PayPeriods->find('all')->where(['business_id' => $this->Auth->user('business_id')]);
         $payPeriods = $this->paginate($query);
 
         $this->set(compact('payPeriods'));
@@ -81,6 +91,61 @@ class PayPeriodsController extends AppController
             ->toArray();
 
         $this->set(compact('payPeriod', 'jobs'));
+    }
+
+    public function review($id = null)
+    {
+        $payPeriod = $this->PayPeriods->get($id, [
+            'contain' => []
+        ]);
+
+        // Handle Post to CLOSE Pay Period
+        if ($this->request->is('post')) {
+
+            $newData = $this->request->getData();
+
+            if($newData['confirmed'] === 'confirmed'){
+                // confirmed is not a valid entity trait
+                unset($newData['confirmed']);
+
+                $payPeriod = $this->PayPeriods->patchEntity($payPeriod, $this->request->getData());
+                if ($this->PayPeriods->save($payPeriod)) {
+                    $this->Flash->success(__('The pay period has been closed. ID: '. $id));
+
+                    return $this->redirect(['action' => 'index']);
+                }
+                $this->Flash->error(__('The pay period could not be closed. Please, try again.'));
+            } else {
+                $this->Flash->error(__('You must confirm closing the Pay Period. Please, try again.'));
+            }
+
+        }
+
+
+
+        $this->Contractors = TableRegistry::getTableLocator()->get('Contractors');
+
+        $business_id = $this->Auth->user('business_id');
+
+        $period_start = \Cake\Database\Type::build('date')->marshal($payPeriod->start_date)->format('Y-m-d');
+        $period_end = \Cake\Database\Type::build('date')->marshal($payPeriod->end_date)->format('Y-m-d');
+
+        // Get Jobs from date range
+        $this->Jobs = TableRegistry::getTableLocator()->get('Jobs');
+
+        $jobs = $this->Jobs->find('all')
+            ->where(['business_id'=>$business_id])
+            ->Where([
+                'AND' => [['appointment_date >=' => $period_start], ['appointment_date <=' => $period_end]]
+            ])->contain(['Payments','AccountPayments'])->toArray();
+
+        $contractors = $this->Contractors->find('all',['keyField'=>'id'])
+            ->where(['business_id'=> $business_id])
+            ->indexBy('technician_id')->toArray();
+
+        //$supplier_list = Hash::combine($contractors, ‘{n}.id’,’{n}.supplier.provider_name’);
+
+        $this->set(compact('payPeriod', 'jobs', 'contractors'));
     }
 
     /**
@@ -154,12 +219,13 @@ class PayPeriodsController extends AppController
     }
 
     public function generateStats($id){
+
         $payPeriod = $this->PayPeriods->get($id);
         $stats = $this->Accounting->generatePayPeriodStats($id);
 
         $updatedpayPeriod = $this->PayPeriods->patchEntity($payPeriod, $stats);
 
-        if ($error = $this->PayPeriods->save($updatedpayPeriod)) {
+        if ($this->PayPeriods->save($updatedpayPeriod)) {
             $this->Flash->success(__('Pay period '. $payPeriod->start_date . ' - ' . $payPeriod->end_date . ' Processed'));
             $session = $this->getRequest()->getSession();
             $session->write('App.Processing.lastPayPeriod', $id);

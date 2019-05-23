@@ -51,7 +51,7 @@
                     <table cellpadding="0" cellspacing="0">
                         <?php
 
-                        echo $this->Html->tableHeaders(['Ends', 'Status', 'Completed', 'Cancelled', 'Pending']);
+                        echo $this->Html->tableHeaders(['Ends', 'Status', 'Completed', 'Cancelled', 'Pending', 'Payment(s)']);
 
                         foreach ($payPeriods as $period){
                             echo $this->Html->tableCells([
@@ -60,7 +60,8 @@
                                     $period->status,
                                     $period->jobs_completed,
                                     $period->jobs_cancelled,
-                                    $period->jobs_pending
+                                    $period->jobs_pending,
+                                    $this->Html->link('PAY', ['controller'=>'payments', 'action' => 'auto', $period->id])
                                 ]
                             ]);
                         }?>
@@ -73,13 +74,14 @@
     </div>
     <div>
 
-    <h3><?php echo __('Tlht Dashboard') ?></h3>
+    <h3><?php echo __('Current Pay Period') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
         <tr>
-            <th scope="col"><?php echo $this->Paginator->sort('appointment_date'); ?></th>
+            <th scope="col"><?php echo $this->Paginator->sort('appointment_date', 'Date'); ?></th>
             <th scope="col"><?php echo $this->Paginator->sort('technician'); ?></th>
-            <th scope="col"><?php echo $this->Paginator->sort('service_order_id'); ?></th>
+            <th scope="col"><?php echo $this->Paginator->sort('service_order_id', 'Service ID'); ?></th>
+            <th>Status</th>
             <th scope="col">Net</th>
             <th>Expense(s)</th>
             <th>Profit</th>
@@ -99,7 +101,8 @@
             <tr class="<?php echo $row_class;?>" id="job-id<?php echo $job->id;?>">
                 <td><?php echo h($job->appointment_date); ?></td>
                 <td><?php echo explode('-', $job->technician)[0]; ?></td>
-                <td><?php echo $job->service_order_id; ?></td>
+                <td><?php echo  $this->Html->link($job->service_order_id, ['controller'=>'jobs', 'action' => 'view', $job->id]) ?></td>
+                <td><?php echo $job->job_status; ?></td>
                 <td>
                     <?php if(!empty($job['payments'])){?>
 
@@ -126,8 +129,7 @@
                 <?php $class = $profit < 0 ? 'danger': ''; ?>
                 <td ><div class="<?php echo $class; ?>"><?php echo $profit;?></div></td>
                 <td class="actions">
-                    <?php echo  $this->Html->link(__('View'), ['controller'=>'jobs', 'action' => 'view', $job->id]) ?>
-                    <?php if(!empty($job['payments'])){echo ' | ' .$this->Html->link(__('Make Payment'), ['controller'=>'account-payments', 'action' => 'add', $job->id]);}  ?>
+                    <?php if(!empty($job['payments'])){echo $this->Html->link(__('Make Payment'), ['controller'=>'account-payments', 'action' => 'add', $job->id]);}  ?>
                 </td>
             </tr>
         <?php } ?>

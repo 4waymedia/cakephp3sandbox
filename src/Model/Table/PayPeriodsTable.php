@@ -40,11 +40,12 @@ class PayPeriodsTable extends Table
     {
         parent::initialize($config);
 
+        $this->addBehavior('Timestamp');
+
         $this->setTable('pay_periods');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->addBehavior('Timestamp');
     }
 
     /**

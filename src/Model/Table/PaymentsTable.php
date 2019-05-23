@@ -33,6 +33,7 @@ class PaymentsTable extends Table
 
         // Replace Amazone '--' '---' with NULL
         $this->addBehavior('HyphenNull');
+        $this->addBehavior('Timestamp');
 
         $this->setTable('payments');
         $this->setDisplayField('id');

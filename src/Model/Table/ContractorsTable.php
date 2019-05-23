@@ -36,6 +36,8 @@ class ContractorsTable extends Table
     {
         parent::initialize($config);
 
+        $this->addBehavior('Timestamp');
+
         $this->setTable('contractors');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');

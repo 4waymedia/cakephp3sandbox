@@ -34,6 +34,8 @@ class BusinessesUsersTable extends Table
     {
         parent::initialize($config);
 
+        $this->addBehavior('Timestamp');
+
         $this->setTable('businesses_users');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');

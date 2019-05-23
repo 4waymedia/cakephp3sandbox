@@ -16,7 +16,7 @@ use Cake\I18n\Time;
 class TlhtController extends AppController
 {
     public $paginate = [
-        'limit' => 50,
+        'limit' => 100,
         'order' => [
             'appointment_date' => 'DESC'
         ]
@@ -57,14 +57,21 @@ class TlhtController extends AppController
 
         $payPeriods = $this->Amazon->getCurrentPayPeriod($business_id);
 
-        if(!$payPeriods){
+        if( !$payPeriods || empty($payPeriods) ){
+
+            // Attempt to generate the next pay period
             $this->Flash->notice(__('You must setup your business Pay Periods before using the Dashboard.'));
-            $this->redirect(['controller'=>'tlht', 'action'=>'setup']);
+            return $this->redirect(['controller'=>'tlht', 'action'=>'setup']);
         }
 
-        //$passedArgs = $this->request->getParam('pass');
+        $payPeriod = $payPeriods[0];
 
-        $jobs = $this->Paginator->paginate($this->Jobs->find()->contain(['Payments','AccountPayments']), $this->paginate);
+        //$passedArgs = $this->request->getParam('pass');
+        $query = $this->Jobs->find()->contain(['Payments','AccountPayments'])
+            ->where(['appointment_date >='=>$payPeriod->start_date->format('Y-m-d')])
+            ->where(['appointment_date <='=>$payPeriod->end_date->format('Y-m-d')]);
+
+        $jobs = $this->Paginator->paginate($query, $this->paginate);
         $this->set(compact('jobs', 'payPeriods'));
 
     }
@@ -163,7 +170,7 @@ class TlhtController extends AppController
 
                 }
                 $this->Flash->success(__('The have created your Business'));
-                $this->redirect(['controller'=>'businesses', 'action'=>'index']);
+                return $this->redirect(['controller'=>'businesses', 'action'=>'index']);
 
             }else{
                 $this->Flash->error(__('The user business could not be saved. Please, try again.'));

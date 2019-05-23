@@ -35,6 +35,8 @@ class AccountPaymentsTable extends Table
     {
         parent::initialize($config);
 
+        $this->addBehavior('Timestamp');
+
         $this->setTable('account_payments');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
@@ -48,6 +50,10 @@ class AccountPaymentsTable extends Table
         ]);
         $this->belongsTo('Jobs', [
             'foreignKey' => 'job_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('Businesses', [
+            'foreignKey' => 'business_id',
             'joinType' => 'INNER'
         ]);
 
