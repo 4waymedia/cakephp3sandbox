@@ -55,16 +55,14 @@ class TlhtController extends AppController
 
         $business_id = $this->Auth->user('business_id');
 
-        $payPeriods = $this->Amazon->getCurrentPayPeriod($business_id);
+        $payPeriod = $this->Amazon->getCurrentPayPeriod($business_id);
 
-        if( !$payPeriods || empty($payPeriods) ){
+        if( !$payPeriod || empty($payPeriod) ){
 
             // Attempt to generate the next pay period
             $this->Flash->notice(__('You must setup your business Pay Periods before using the Dashboard.'));
             return $this->redirect(['controller'=>'tlht', 'action'=>'setup']);
         }
-
-        $payPeriod = $payPeriods[0];
 
         //$passedArgs = $this->request->getParam('pass');
         $query = $this->Jobs->find()->contain(['Payments','AccountPayments'])
@@ -72,7 +70,7 @@ class TlhtController extends AppController
             ->where(['appointment_date <='=>$payPeriod->end_date->format('Y-m-d')]);
 
         $jobs = $this->Paginator->paginate($query, $this->paginate);
-        $this->set(compact('jobs', 'payPeriods'));
+        $this->set(compact('jobs', 'payPeriod'));
 
     }
 

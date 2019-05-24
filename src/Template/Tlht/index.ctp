@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="large-3 columns">
 
-                    <p><strong><?php echo $payPeriods[0]->start_date . ' - ' . $payPeriods[0]->end_date; ?></strong> </p>
+                    <p><strong><?php echo $payPeriod->start_date . ' - ' . $payPeriod->end_date; ?></strong> </p>
                     <p>These are your active Pay Periods. You can change the status if needed.</p>
                 </div>
                 <div class="large-9 columns">
@@ -53,18 +53,17 @@
 
                         echo $this->Html->tableHeaders(['Ends', 'Status', 'Completed', 'Cancelled', 'Pending', 'Payment(s)']);
 
-                        foreach ($payPeriods as $period){
                             echo $this->Html->tableCells([
                                 [
-                                    $period->end_date,
-                                    $period->status,
-                                    $period->jobs_completed,
-                                    $period->jobs_cancelled,
-                                    $period->jobs_pending,
-                                    $this->Html->link('PAY', ['controller'=>'payments', 'action' => 'auto', $period->id])
+                                    $payPeriod->end_date,
+                                    $payPeriod->status,
+                                    $payPeriod->jobs_completed,
+                                    $payPeriod->jobs_cancelled,
+                                    $payPeriod->jobs_pending,
+                                    $this->Html->link('PAY', ['controller'=>'payments', 'action' => 'auto', $payPeriod->id])
                                 ]
                             ]);
-                        }?>
+                        ?>
                     </table>
                 </div>
             </div>

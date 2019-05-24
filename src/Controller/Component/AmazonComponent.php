@@ -97,18 +97,27 @@ class AmazonComponent extends Component
 
         $this->PayPeriods = TableRegistry::getTableLocator()->get('PayPeriods');
 
-        $periods = $this->PayPeriods->find()
+        // Get last period
+        $last_period = $this->PayPeriods->find()
             ->order(['PayPeriods.start_date' => 'DESC'])
-            ->where(['PayPeriods.start_date <' => $today])
-            ->where(['PayPeriods.end_date >=' => $today])
-            ->where(['business_id'=> $business_id]);
+            ->where(['business_id'=> $business_id])->first();
 
-        if(empty($periods->toList())){
-            $this->generateNextPayPeriod($business_id);
-            return $this->getCurrentPayPeriod($business_id);
-        }
+        // If NONE redirect
+            if(empty($last_period)){
+                return false;
+            }
 
-        return $periods->toList();
+        // If Date is before today, create next period
+            if($last_period->start_date <= $today){
+                // Generate needed pay Periods to get up to date
+                $this->generateNextPayPeriod($business_id);
+
+                $last_period = $this->PayPeriods->find()
+                    ->order(['PayPeriods.start_date' => 'DESC'])
+                    ->where(['business_id'=> $business_id])->first();
+            }
+
+        return $last_period;
     }
 
     public function createPayPeriodsToDate($business_id){
