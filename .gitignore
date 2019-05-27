@@ -3,3 +3,5 @@ tmp/cache/models/*
 tmp/cache/*
 logs/*
 tmp/*
+/config/app_local.php
+/config/bootstrap.local.php
