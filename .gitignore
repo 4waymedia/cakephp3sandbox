@@ -3,10 +3,7 @@ tmp/cache/models/*
 tmp/cache/*
 logs/*
 tmp/*
-<<<<<<< HEAD
+
 /config/app_local.php
 /config/bootstrap.local.php
-=======
-/config/bootstrap.local.php
-/config/app_local.php
->>>>>>> 981882392d067d3f844e92e6ecb14ed0d6901ff6
+
