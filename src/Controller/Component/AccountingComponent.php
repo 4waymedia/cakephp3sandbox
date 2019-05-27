@@ -24,6 +24,7 @@ class AccountingComponent extends Component
         $jobs = $this->Jobs->find('all')
             ->where(['appointment_date >='=>$payPeriod->start_date->format('Y-m-d')])
             ->where(['appointment_date <='=>$payPeriod->end_date->format('Y-m-d')])
+            ->where(['business_id' => $payPeriod->business_id])
             ->contain(['Payments','AccountPayments'])->toArray();
 
         // Generate counts
