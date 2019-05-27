@@ -50,6 +50,15 @@ class ContentController extends AppController
     public function index(){
         $content_models = $this->downloadData;
 
+        // Check for Business
+        $business_id = $this->Auth->user('business_id');
+        if(empty($business_id)){
+            $this->Flash->set('You must setup your Business to Import', [
+                'element' => 'error'
+            ]);
+            return $this->redirect(['controller' => 'tlht', 'action' => 'setup']);
+        }
+
         // Prepare for Model for download
         if ($this->request->is('post')) {
 
@@ -68,9 +77,15 @@ class ContentController extends AppController
             }
 
             // check for Import form submission
-            if($file = $this->request->getData('Import.csv_file')){
+            if($files = $this->request->getData('Import.csv_file')){
+
                 $model = $this->request->getData('Import.Model');
-                $results = $this->Content->importContent($model, $file);
+
+                foreach($files as $file){
+
+                    $results[$file['name']] = $this->Content->importContent($model, $file);
+
+                }
 
                 $this->set('import_results', $results);
                 $this->set('import_model', $model);

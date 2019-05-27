@@ -8,6 +8,8 @@ use Cake\ORM\TableRegistry;
 
 class ContentComponent extends Component
 {
+    public $components = array('Auth');
+
     var $downloadData = [
         'Jobs' => array(
             'fields'=>['*'],
@@ -29,6 +31,7 @@ class ContentComponent extends Component
             // Model is not allowed
             return array('error'=>'Model not allowed');
         }
+
         // Load table
         $theTable = TableRegistry::getTableLocator()->get($model);
 
@@ -47,27 +50,30 @@ class ContentComponent extends Component
         // move up to the header row
         while ($seeking && !feof($handle)) {
             $row = fgetcsv($handle, 0, $delimiter);
-
             $pass = false;
 
-            foreach($row as $pointer => $label){
-                $test_name = $this->getFieldFromHeaderString($label);
-                if(in_array($test_name, $valid_fields)){
-                    $pass = true;
+                foreach($row as $pointer => $label){
+                    $test_name = $this->getFieldFromHeaderString($label);
+
+                    if(in_array($test_name, $valid_fields)){
+                        $pass = true;
+                    }
                 }
-            }
 
             if($pass){
 
-                // set header for parsing
+                // set header fields for parsing
                 $header = $row;
-
                 // EXIT while
                 $seeking = false;
             }
 
         }
 
+        // Return error if header was NOT found and matched.
+        if($pass == false){
+            return array('error'=>'No Matching fields... Possible Incorrect Model selected.');
+        }
 
 
         // Get fields from Header
@@ -84,6 +90,7 @@ class ContentComponent extends Component
             $row_counter++;
 
             $data = array();
+
             // rebuild CakePHP model object
             foreach ($fields as $k => $head) {
                 // get the data field from Model.field
@@ -106,6 +113,9 @@ class ContentComponent extends Component
                 $data = $this->sanitizeJobData($data);
             }
 
+            // Update data with unique system info
+            $data = $this->sanitizeUniqueData($data);
+
             // Save Refunds to table
             if(isset($data['refunds'])){
 
@@ -118,17 +128,35 @@ class ContentComponent extends Component
                 $entity->set($data[$model],['guard' => false]);
                 $result = $theTable->save($entity);
 
+                $result['import_status'] = 'Updated by ID';
+
+            } elseif(isset($data['transaction_type']) && $data['transaction_type'] == 'Other'){
+
+                $entity = $theTable->newEntity();
+                $entity->set($data,['guard' => false]);
+
+                $result = $theTable->save($entity);
+
+                $result['import_status'] = 'created';
+
             } elseif(isset($data[$obj_model['key']]) && $theTable->exists([$obj_model['key'] => $data[$obj_model['key']]])) {
 
                 $entity = $theTable->{$obj_model['query']}( $data[$obj_model['key']])->first();
                 $entity->set($data,['guard' => false]);
                 $result = $theTable->save($entity);
+
+                if(isset($data['service_order_id'])){
+                    $result['import_status'] = 'Updated : by '. $data['service_order_id'];
+                }
+
             } else {
+
                 $entity = $theTable->newEntity();
                 $entity->set($data,['guard' => false]);
                 $result = $theTable->save($entity);
+                $result['import_status'] = 'created';
+
             }
-            
 
             if(isset($data['technician'])){
                 $technicians[$data['technician']] = $data['technician'];
@@ -180,15 +208,24 @@ class ContentComponent extends Component
                 // Create NEW contractor
                 $contractor = $ContractorsTable->newEntity();
                 $contractor->first_name = $split[0];
-                $contractor->last_name = explode("-", $split[1])[0];;
+                $contractor->last_name = explode("-", $split[1])[0];
 
                 $contractor->technician_id = $split[1];
                 $contractor->role_id = 1;
+                $contractor->business_id = $this->Auth->user('business_id');
 
                 $ContractorsTable->save($contractor);
             }
         }
 
+    }
+
+    public function sanitizeUniqueData($data)
+    {
+        // Get the Users business_id
+        $data['business_id'] = $this->Auth->user('business_id');
+
+        return $data;
     }
 
     public function sanitizePaymentData($data)
@@ -226,6 +263,12 @@ class ContentComponent extends Component
             if(isset($data['payment_type']) && $data['payment_type'] == 'Product charges'){
                 $data['total_product_charges'] = $data['amount'];
                 unset($data['amount']);
+            }
+
+            // Check Other Fee
+
+            if($data['transaction_type'] == 'Other'){
+                $data['other'] = $data['amount'];
             }
         }
 

@@ -21,7 +21,7 @@
     <fieldset>
         <legend><?php echo __('Business Info') ?></legend>
         <?php
-        echo $this->Form->control('Business.name');
+        echo $this->Form->control('Business.business_name');
         echo $this->Form->control('Business.phone_number');
         echo $this->Form->control('Business.city');
         echo $this->Form->control('Business.state');

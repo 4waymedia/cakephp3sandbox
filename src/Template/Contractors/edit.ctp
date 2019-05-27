@@ -21,12 +21,11 @@
     <fieldset>
         <legend><?php echo __('Edit Contractor') ?></legend>
         <?php
-            echo $this->Form->text('technician_id');
+            echo $this->Form->control('technician_id',['type'=>'text','readonly', 'value'=>$contractor->technician_id]);
             echo $this->Form->control('first_name');
             echo $this->Form->control('last_name');
             echo $this->Form->control('email');
             echo $this->Form->control('nickname');
-            echo $this->Form->control('technician_id');
             echo $this->Form->hidden('role_id');
         ?>
     </fieldset>

@@ -21,6 +21,9 @@ class JobsController extends AppController
     public function index()
     {
 
+        // Set paginate for business_id
+        $this->paginate['conditions']['business_id'] = $this->Auth->user('business_id');
+
         // Handle filters by Job Status
         $job_status = $this->request->getQuery('job_status', 'all');;
         if($job_status && $job_status != 'all'){
@@ -57,12 +60,14 @@ class JobsController extends AppController
         $product_order_statuses = $this->Jobs->find('list', [
             'keyField'=>'product_order_status',
             'valueField'=>'product_order_status'
-        ])->distinct();
+        ])->where(['business_id' => $this->Auth->user('business_id')])
+            ->distinct();
 
         $technicians = $this->Jobs->find('list', [
             'keyField' => 'technician',
             'valueField' => 'technician'
-        ])->distinct();
+        ])->where(['business_id' => $this->Auth->user('business_id')])
+            ->distinct();
 
         $job_statuses = $job_statuses->toArray();
         $product_order_statuses = $product_order_statuses->toArray();
@@ -82,7 +87,7 @@ class JobsController extends AppController
     public function view($id = null)
     {
         $job = $this->Jobs->get($id, [
-            'contain' => ['Technicians']
+            'contain' => ['Technicians', 'Payments']
         ]);
 
         $this->set('job', $job);

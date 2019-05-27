@@ -9,6 +9,11 @@
         color:red;
         font-weight: bold;
     }
+    .red{
+        background-color: #ffd2d2 !important;
+        border-top: 2px solid red;
+    }
+
 </style>
 <nav class="large-2 medium-3 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -38,26 +43,27 @@
             <!-- modal -->
             <div class="row">
                 <div class="large-3 columns">
-                    <p><strong><?php echo $payPeriods[0]->start_date . ' - ' . $payPeriods[0]->end_date; ?></strong> </p>
+
+                    <p><strong><?php echo $payPeriod->start_date . ' - ' . $payPeriod->end_date; ?></strong> </p>
                     <p>These are your active Pay Periods. You can change the status if needed.</p>
                 </div>
                 <div class="large-9 columns">
                     <table cellpadding="0" cellspacing="0">
                         <?php
 
-                        echo $this->Html->tableHeaders(['Ends', 'Status', 'Completed', 'Cancelled', 'Pending']);
+                        echo $this->Html->tableHeaders(['Ends', 'Status', 'Completed', 'Cancelled', 'Pending', 'Payment(s)']);
 
-                        foreach ($payPeriods as $period){
                             echo $this->Html->tableCells([
                                 [
-                                    $period->end_date,
-                                    $period->status,
-                                    $period->jobs_completed,
-                                    $period->jobs_cancelled,
-                                    $period->jobs_pending
+                                    $payPeriod->end_date,
+                                    $payPeriod->status,
+                                    $payPeriod->jobs_completed,
+                                    $payPeriod->jobs_cancelled,
+                                    $payPeriod->jobs_pending,
+                                    $this->Html->link('PAY', ['controller'=>'payments', 'action' => 'auto', $payPeriod->id])
                                 ]
                             ]);
-                        }?>
+                        ?>
                     </table>
                 </div>
             </div>
@@ -67,13 +73,14 @@
     </div>
     <div>
 
-    <h3><?php echo __('Tlht Dashboard') ?></h3>
+    <h3><?php echo __('Current Pay Period') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
         <tr>
-            <th scope="col"><?php echo $this->Paginator->sort('appointment_date'); ?></th>
+            <th scope="col"><?php echo $this->Paginator->sort('appointment_date', 'Date'); ?></th>
             <th scope="col"><?php echo $this->Paginator->sort('technician'); ?></th>
-            <th scope="col"><?php echo $this->Paginator->sort('service_order_id'); ?></th>
+            <th scope="col"><?php echo $this->Paginator->sort('service_order_id', 'Service ID'); ?></th>
+            <th>Status</th>
             <th scope="col">Net</th>
             <th>Expense(s)</th>
             <th>Profit</th>
@@ -82,13 +89,19 @@
         </thead>
         <tbody>
         <?php foreach ($jobs as $job) {
+            $row_class = '';
+            // Check for payment on completed job
+            if($job->job_status == 'COMPLETED'){
+                $row_class = count($job['payments']) < 1 ? 'red': '';
+            }
 
             $profit = 0;
             ?>
-            <tr>
+            <tr class="<?php echo $row_class;?>" id="job-id<?php echo $job->id;?>">
                 <td><?php echo h($job->appointment_date); ?></td>
                 <td><?php echo explode('-', $job->technician)[0]; ?></td>
-                <td><?php echo $job->service_order_id; ?></td>
+                <td><?php echo  $this->Html->link($job->service_order_id, ['controller'=>'jobs', 'action' => 'view', $job->id]) ?></td>
+                <td><?php echo $job->job_status; ?></td>
                 <td>
                     <?php if(!empty($job['payments'])){?>
 
@@ -115,8 +128,7 @@
                 <?php $class = $profit < 0 ? 'danger': ''; ?>
                 <td ><div class="<?php echo $class; ?>"><?php echo $profit;?></div></td>
                 <td class="actions">
-                    <?php echo  $this->Html->link(__('View'), ['controller'=>'jobs', 'action' => 'view', $job->id]) ?>
-                    <?php if(!empty($job['payments'])){echo ' | ' .$this->Html->link(__('Make Payment'), ['controller'=>'account-payments', 'action' => 'add', $job->id]);}  ?>
+                    <?php if(!empty($job['payments'])){echo $this->Html->link(__('Make Payment'), ['controller'=>'account-payments', 'action' => 'add', $job->id]);}  ?>
                 </td>
             </tr>
         <?php } ?>

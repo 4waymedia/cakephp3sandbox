@@ -84,15 +84,7 @@ foreach($technicians as $technician => $tech){
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($jobs as $job):
-
-                if($job->id == 175)
-                {
-                    debug($job);
-                    die();
-                }
-
-                ?>
+            <?php foreach ($jobs as $job): ?>
             <tr>
 
                 <td><?php echo h($job->job_status); ?></td>

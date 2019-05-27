@@ -113,6 +113,12 @@ return [
             'path' => CACHE,
             'url' => env('CACHE_DEFAULT_URL', null),
         ],
+        'week' => [
+            'className' => 'File',
+            'duration' => '+7 days',
+            'path' => CACHE,
+            'prefix' => 'cake_week_'
+        ],
 
         /**
          * Configure the cache used for general framework caching.

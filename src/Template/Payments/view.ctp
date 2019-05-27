@@ -52,9 +52,5 @@
             <th scope="row"><?php echo __('Total') ?></th>
             <td><?php echo h($payment->total) ?></td>
         </tr>
-        <tr>
-            <th scope="row"><?php echo __('Id') ?></th>
-            <td><?php echo $this->Number->format($payment->id) ?></td>
-        </tr>
     </table>
 </div>

@@ -6,6 +6,12 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
+use Cake\I18n\Date;
+use Cake\I18n\Time;
+
+use Cake\Event\Event;
+use ArrayObject;
+use Cake\Datasource\EntityInterface;
 
 /**
  * PayPeriods Model
@@ -34,11 +40,12 @@ class PayPeriodsTable extends Table
     {
         parent::initialize($config);
 
+        $this->addBehavior('Timestamp');
+
         $this->setTable('pay_periods');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->addBehavior('Timestamp');
     }
 
     /**
@@ -90,4 +97,10 @@ class PayPeriodsTable extends Table
 
         return $validator;
     }
+
+    public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
+    {
+        $data['calculated'] = $time = new Time('now', 'America/New_York');
+    }
+
 }

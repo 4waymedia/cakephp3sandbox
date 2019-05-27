@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
 
 /**
  * Contractors Controller
@@ -22,7 +23,7 @@ class ContractorsController extends AppController
     {
 
         $this->loadComponent('Paginator');
-        $contractors = $this->Paginator->paginate($this->Contractors->find());
+        $contractors = $this->Paginator->paginate($this->Contractors->find()->where(['business_id' => $this->Auth->user('business_id')]));
         $roles = $this->Contractors->Roles->find('list', ['limit' => 200])->toArray();
         $this->set(compact('contractors', 'roles'));
 
@@ -70,7 +71,10 @@ class ContractorsController extends AppController
             $this->Flash->error(__('The contractor could not be saved. Please, try again.'));
         }
 
-        $roles = $this->Contractors->Roles->find('list', ['limit' => 200]);
+        $roles = $this->Contractors->Roles->find('list', [
+            'limit' => 200,
+            'conditions' => ['name IN'=> ['Contractor','Assistant','Admin','Manager','Accountant']]
+        ]);
         $this->set(compact('roles', 'contractor'));
     }
 
@@ -120,5 +124,14 @@ class ContractorsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function invite($id = null)
+    {
+        // Invite contractor based on Email or phone
+        // $twillio_sid = Configure::read('twillio_sid');
+        $this->Flash->error(__('Invitation is a FEATURE not currently available.'));
+        return $this->redirect(['action' => 'index']);
+
     }
 }

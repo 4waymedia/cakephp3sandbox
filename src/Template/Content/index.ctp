@@ -40,7 +40,7 @@ foreach($content_models as $model=>$fields){
     <!-- data loaded from results -->
         <?php
         if(isset($import_results) && !isset($import_results['error'])){ ?>
-            <label>Results from File upload: <?php echo $import_model; ?></label>
+            <label>Results from Model upload: <?php echo $import_model; ?></label>
             <?php
 
             $results_element = 'import_' . strtolower($import_model) . '_results';
@@ -55,6 +55,10 @@ foreach($content_models as $model=>$fields){
         <h4>Filename MUST be in the format: MODEL-string.csv</h4>
         <p>The data will be inserted into the MODEL in the name of the file.</p>
         <label>Accepted MODELS:<?php echo implode(',', (array_keys($options)));?></label>
+        <ul>
+            <li><label>Jobs: These are typically <strong>JobReport.csv</strong> from Amazon</label></li>
+            <li><label>Paymentss: These are typically <strong>report.txt</strong> from Amazon</label></li>
+        </ul>
         <?php
         $defaults['type'] = 'file';
         echo $this->Form->create('Import', $defaults);
@@ -63,10 +67,10 @@ foreach($content_models as $model=>$fields){
         echo $this->Form->control('Import.Model', array(
         'options'=>$options,
         ));
+        $this->Form->unlockField('Import.csv_file');
+        echo $this->Form->control('Import.csv_file.', array('type'=>'file','multiple' => 'true', 'accept'=>'.csv,.txt'));
 
-        echo $this->Form->control('Import.csv_file', array('type'=>'file', 'accept'=>'.csv,.txt'));
-
-        echo $this->Form->submit('Upload CSV', array('class'=>'btn btn-primary'));
+        echo $this->Form->submit('Upload Files(s)', array('class'=>'btn btn-primary'));
 
         echo $this->Form->end();
         ?>

@@ -38,6 +38,8 @@ class JobsTable extends Table
     {
         parent::initialize($config);
 
+        $this->addBehavior('Timestamp');
+
         // Replace Amazone '--' '---' with NULL
         $this->addBehavior('HyphenNull');
 

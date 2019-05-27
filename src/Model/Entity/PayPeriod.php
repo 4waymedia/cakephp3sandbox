@@ -41,6 +41,7 @@ class PayPeriod extends Entity
         'calculated' => true,
         'created' => true,
         'modified' => true,
-        'status' => true
+        'status' => true,
+        'job_payments' => true
     ];
 }

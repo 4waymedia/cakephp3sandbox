@@ -6,13 +6,7 @@
 $contractor_pay = floor(100 * .8 * str_replace('$', '', $job['payments'][0]['total']))/100;
 $techNote = false;
 
-foreach($job['technicians'] as $technician){
-    $technicians[$technician['id']] = $technician['technician_id'];
-}
-if(empty($technicians)){
-    $technicians = $contractors;
-    $techNote = true;
-}
+$assigned_contractor = array_search(explode(' ', $job['technician'])[1], $contractors);
 
 // Count Payments to Contractors
 $contractor_total = 0;
@@ -27,6 +21,7 @@ foreach($paymentsMade as $payment){
 }
 
 $payout = $contractor_pay - $contractor_total;
+$net_total =$job['payments'][0]['total'] - $contractor_pay;
 
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -44,17 +39,18 @@ $payout = $contractor_pay - $contractor_total;
 <div class="accountPayments form large-9 medium-8 columns content">
     <?= $this->Form->create($accountPayment) ?>
     <fieldset>
-        <legend><?= __('Add Account Payment') ?></legend>
+        <legend><?= __('Job Overview') ?></legend>
 
         <table>
             <tr>
                 <thead>
                     <tr>
-                    <th>Job Amount</th>
-                    <th>Job Fee</th>
-                    <th>Net Amount</th>
-                    <th>Contractor Pay</th>
+                        <th>Job Amount</th>
+                        <th>Job Fee</th>
+                        <th>Net Amount</th>
+                        <th>Contractor Pay</th>
                         <th>Payout Total</th>
+                        <th>NET Profit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,6 +60,7 @@ $payout = $contractor_pay - $contractor_total;
                         <td><?php echo $job['payments'][0]['total']; ?></td>
                         <td><?php echo $this->Number->currency($contractor_pay, 'USD'); ?></td>
                         <td><?php echo $this->Number->currency($contractor_total, 'USD'); ?></td>
+                        <td><?php echo $this->Number->currency($net_total, 'USD'); ?></td>
                     </tr>
                 </tbody>
             </tr>
@@ -79,7 +76,9 @@ $payout = $contractor_pay - $contractor_total;
                 array(),
                 array('class'=>''));
 
-            $cells[] = array('','','',$this->Number->currency($contractor_total, 'USD'));
+            $cells[] = array('','',
+                'Payout Percentage: ' . $this->Number->toPercentage(  $contractor_total / $job['payments'][0]['total'] * 100),
+                'Total: ' .$this->Number->currency($contractor_total, 'USD'));
 
             echo $this->Html->tableCells($cells);
             echo $this->Html->tag('/table');
@@ -94,7 +93,8 @@ $payout = $contractor_pay - $contractor_total;
             if($techNote){
                 //echo $this->Form->label('Contractor Not assigned');
             }
-            echo $this->Form->control('contractor_id', ['options' => $technicians]);
+
+            echo $this->Form->control('contractor_id', ['options' => $contractors, 'default'=>$assigned_contractor]);
 
             echo $this->Form->control('amount', ['value'=>$payout]);
             echo $this->Form->control('confirmation_receipt');

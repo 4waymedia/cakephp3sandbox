@@ -25,6 +25,7 @@ class UsersController extends AppController
     public function initialize()
     {
         parent::initialize();
+        $this->loadComponent('Amazon');
         $this->Auth->allow(['logout', 'register', 'login', 'join']);
     }
 
@@ -145,7 +146,10 @@ class UsersController extends AppController
 
                         if($business){
                            $user['business_id'] = $business->business_id;
+                           $this->Auth->setUser($user);
                         }
+                        $this->Auth->setUser($user);
+                        return $this->redirect(['controller' => 'tlht', 'action' => 'index']);
 
                         break;
                     case 'Technician':
@@ -153,8 +157,6 @@ class UsersController extends AppController
                         return $this->redirect(['controller' => 'Contractors', 'action' => 'dashboard']);
                         break;
                 }
-
-                $this->Auth->setUser($user);
 
                 return $this->redirect($this->Auth->redirectUrl());
             }
@@ -206,7 +208,7 @@ class UsersController extends AppController
 
             // check if first_pay_period_date is set
 
-        // redirect
+        // return True or Redirect to Finish Setup
 
     }
 }

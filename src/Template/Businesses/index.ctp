@@ -5,6 +5,7 @@
  */
 
 $this->assign('title', 'My Business');
+$staff = array();
 
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -32,7 +33,7 @@ $this->assign('title', 'My Business');
             <tr>
                 <td><?php echo h($business->first_pay_period_date) ?></td>
                 <td><?php echo count($business->pay_periods);?></td>
-                <td></td>
+                <td><?php echo count($business->contractors);?></td>
                 <td><?php echo h($business->business_name) ?></td>
                 <td><?php echo h($business->phone_number) ?></td>
                 <td><?php echo h($business->city) . ', ' .h($business->state); ?></td>
@@ -43,24 +44,35 @@ $this->assign('title', 'My Business');
                     <?php echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $business->id], ['confirm' => __('Are you sure you want to delete # {0}?', $business->id)]) ?>
                 </td>
             </tr>
-            <?php endforeach; ?>
+            <?php $staff[] = $business->contractors;
+
+            endforeach; ?>
         </tbody>
     </table>
     <div>
         <h4>Staff</h4>
-    <?php if(isset($staff)):?>
+    <?php if(!empty($staff)):?>
 
 
 
         <?php
         echo $this->Html->tag('table', null, array('class'=>'table-striped table'));
             echo $this->Html->tableHeaders(
-                array('Role', 'Name','Email'),
+                array('Role', 'Name','Email', 'Action'),
                 array(),
                 array('class'=>''));
 
-            foreach($staff as $person){
-
+            foreach($staff as $group){
+                foreach($group as $person){
+                    echo $this->Html->tableCells([
+                        [
+                            $roles[$person->role_id],
+                            $person->first_name . ' ' . $person->last_name,
+                            $person->email,
+                            $this->Html->link(__('Edit'), ['controller'=>'contractors','action' => 'edit', $person->id])
+                        ]
+                    ]);
+                }
 
             }
 

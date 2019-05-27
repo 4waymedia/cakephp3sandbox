@@ -41,6 +41,7 @@ class Contractor extends Entity
         'created' => true,
         'modified' => true,
         'amazon' => true,
+        'deduction_percent' => true,
         'type' => true
     ];
 }
