@@ -19,7 +19,8 @@
                 <th scope="col"><?php echo  $this->Paginator->sort('first_name') ?></th>
                 <th scope="col"><?php echo  $this->Paginator->sort('last_name') ?></th>
                 <th scope="col"><?php echo  $this->Paginator->sort('technician_id',['Label'=>'Technician ID']) ?></th>
-                <th scope="col"><?php echo  $this->Paginator->sort('email') ?></th>
+                <th scope="col"><?php echo  $this->Paginator->sort('deduction_percent',['Label'=>'Deduction']) ?></th>
+                <th scope="col"><?php echo 'User' ?></th>
 
                 <th scope="col" class="actions"><?php echo  __('Actions') ?></th>
             </tr>
@@ -33,7 +34,14 @@
                 <td><?php echo  $contractor->first_name; ?></td>
                 <td><?php echo  $contractor->last_name; ?></td>
                 <td><?php echo  h($contractor->technician_id) ?></td>
-                <td><?php echo  h($contractor->email) ?></td>
+                <td><?php echo  $contractor->deduction_percent; ?></td>
+                <td><?php
+                    if(empty($contractor->user_id)){
+                        echo $this->Html->link('Invite', ['controller'=>'contractors', 'action'=>'invite', $contractor->id]);
+                    } else {
+                        echo $this->Html->link('View', ['controller'=>'contractors', 'action'=>'view', $contractor->id]);
+                    }
+                    ?></td>
 
                 <td class="actions">
                     <?php echo  $this->Html->link(__('View'), ['action' => 'view', $contractor->id]) ?>

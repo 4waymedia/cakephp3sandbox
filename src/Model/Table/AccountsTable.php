@@ -34,6 +34,8 @@ class AccountsTable extends Table
     {
         parent::initialize($config);
 
+        $this->addBehavior('Timestamp');
+
         $this->setTable('accounts');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');

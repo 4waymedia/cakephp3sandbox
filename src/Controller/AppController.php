@@ -16,7 +16,10 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Core\Configure;
+
 use Cake\ORM\TableRegistry;
+use Cake\Datasource\ConnectionManager;
 
 
 /**
@@ -41,6 +44,7 @@ class AppController extends Controller
      */
     public function initialize()
     {
+
         parent::initialize();
 
         $this->loadComponent('Paginator');
@@ -73,7 +77,7 @@ class AppController extends Controller
 
         // Allow the display action so our PagesController
         // continues to work. Also enable the read only actions.
-        //$this->Auth->allow(['display', 'view', 'index']);
+        $this->Auth->allow(['display']);
 
         /*
          * Enable the following component for recommended CakePHP security settings.

@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
+
 
 /**
  * Accounts Controller
@@ -20,6 +22,10 @@ class AccountsController extends AppController
      */
     public function index()
     {
+
+        // Set paginate for business_id
+        $this->paginate['conditions']['business_id'] = $this->Auth->user('business_id');
+
         $accounts = $this->paginate($this->Accounts);
 
         $this->set(compact('accounts'));
@@ -49,11 +55,24 @@ class AccountsController extends AppController
     public function add()
     {
         $account = $this->Accounts->newEntity();
+        $account->business_id = $this->Auth->user('business_id');
+
         if ($this->request->is('post')) {
             $account = $this->Accounts->patchEntity($account, $this->request->getData());
-            if ($this->Accounts->save($account)) {
-                $this->Flash->success(__('The account has been saved.'));
 
+            $accounts = $this->Accounts->find('all')->where(['business_id'=>$account->business_id])->toArray();
+
+            if ($this->Accounts->save($account)) {
+
+                // Set the business default account on first account create
+                if(count($accounts) < 1){
+                    $businessesTable = TableRegistry::get('Businesses');
+                    $business = $businessesTable->get($account->business_id); // Return article with id 12
+
+                    $business->default_account_id = $account->id;
+                    $businessesTable->save($business);
+                }
+                $this->Flash->success(__('The account has been saved.'));
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The account could not be saved. Please, try again.'));
@@ -104,4 +123,5 @@ class AccountsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
 }

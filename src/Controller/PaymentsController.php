@@ -2,6 +2,9 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Controller\Component;
+use Cake\ORM\Entity;
+use Cake\ORM\TableRegistry;
 
 /**
  * Payments Controller
@@ -12,6 +15,12 @@ use App\Controller\AppController;
  */
 class PaymentsController extends AppController
 {
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Accounting');
+    }
 
     /**
      * Index method
@@ -58,6 +67,7 @@ class PaymentsController extends AppController
             }
             $this->Flash->error(__('The payment could not be saved. Please, try again.'));
         }
+
         $this->set(compact('payment'));
     }
 
@@ -113,6 +123,40 @@ class PaymentsController extends AppController
         });
 
         $this->set(compact('records'));
+    }
+
+
+    /** AUTO complete all payments for Pay Period ID
+     *
+     * @param $id
+     */
+    public function auto($id){
+
+        $this->PayPeriods = TableRegistry::getTableLocator()->get('PayPeriods');
+
+        // Get payPeriod by ID
+        $pay_period = $this->PayPeriods->get($id, [
+            'contain' => []
+        ]);
+
+        // Calculate PayPeriod Stats
+        $stats = $this->Accounting->generatePayPeriodStats($id);
+
+        $updatedPayPeriod = $this->PayPeriods->patchEntity($pay_period, $stats);
+        // Save stats
+        $this->PayPeriods->save($updatedPayPeriod);
+
+        // Set all Pay Period Stats to session for auto/bulk payments
+        $preparedPay = $this->Accounting->payPeriodPayments($id);
+
+        // Get all AccountPayments
+
+        if(!isset($preparedPay['completed'])){
+            $this->Flash->error(__('No Payments made'));
+        }
+
+        return $this->redirect(['controller'=>'pay_periods', 'action'=>'review', $id]);
+
     }
 
 }

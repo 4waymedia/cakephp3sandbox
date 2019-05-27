@@ -25,7 +25,8 @@ class UsersController extends AppController
     public function initialize()
     {
         parent::initialize();
-        $this->Auth->allow(['logout', 'register', 'login']);
+        $this->loadComponent('Amazon');
+        $this->Auth->allow(['logout', 'register', 'login', 'join']);
     }
 
     /**
@@ -35,8 +36,9 @@ class UsersController extends AppController
      */
     public function index()
     {
+        $roles = $this->Users->Roles->find('list')->toArray();
         $users = $this->paginate($this->Users);
-        $this->set(compact('users'));
+        $this->set(compact('users', 'roles'));
     }
 
     /**
@@ -64,7 +66,7 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-            $users = $this->Users->patchEntity($user, $this->request->getData());
+            $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
@@ -74,6 +76,7 @@ class UsersController extends AppController
         }
         $this->set(compact('user'));
     }
+
 
     /**
      * Edit method
@@ -89,6 +92,7 @@ class UsersController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
+
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
@@ -96,7 +100,10 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $this->set(compact('user'));
+
+        $roles = $this->Users->Roles->find('list')->toArray();
+
+        $this->set(compact('user', 'roles'));
     }
 
     /**
@@ -109,7 +116,8 @@ class UsersController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $users = $this->Users->get($id);
+        $user = $this->Users->get($id);
+
         if ($this->Users->delete($user)) {
             $this->Flash->success(__('The user has been deleted.'));
         } else {
@@ -121,20 +129,28 @@ class UsersController extends AppController
 
     public function login()
     {
+        $this->viewBuilder()->setLayout('public');
         if ($this->request->is('post')) {
+            $this->Auth->logout();
             $user = $this->Auth->identify();
 
             // get role name
             $user['role'] = $this->Users->Roles->get($user['role_id'])->name;
 
             if ($user) {
-
-                $this->Auth->setUser($user);
                 switch($user['role']){
-                    case 'SysADmin':
+                    case 'SysAdmin':
                     case 'Admin':
                         $BusinessesUsers = TableRegistry::get('BusinessesUsers');
-                        $user['business_id'] = $BusinessesUsers->find()->where(['user_id'=> $user['id']])->first()->toArray()['business_id'];
+                        $business = $BusinessesUsers->find()->where(['user_id'=> $user['id']])->first();
+
+                        if($business){
+                           $user['business_id'] = $business->business_id;
+                           $this->Auth->setUser($user);
+                        }
+                        $this->Auth->setUser($user);
+                        return $this->redirect(['controller' => 'tlht', 'action' => 'index']);
+
                         break;
                     case 'Technician':
                         $this->Auth->setUser($user);
@@ -142,7 +158,6 @@ class UsersController extends AppController
                         break;
                 }
 
-                $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Flash->error('Your username or password is incorrect.');
@@ -157,7 +172,33 @@ class UsersController extends AppController
 
 
     public function register(){
+        $this->viewBuilder()->setLayout('public');
+        $user = $this->Users->newEntity();
+        if ($this->request->is('post')) {
 
+            // Set Role to Admin for business owner
+            $user['role_id'] = 3;
+            $users = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
+
+                // Save Business
+                $business = $this->request->getData('Business');
+                $business['user_id'] = $user->id;
+                // Now Save Business info
+
+                $this->Businesses = TableRegistry::get('Businesses');
+                $business_entity = $this->Businesses->newEntity();
+                $new_business = $this->Businesses->patchEntity($business_entity, $business);
+
+                $this->Businesses->save($new_business);
+
+                $this->Flash->success(__('The user has been saved.'));
+
+                return $this->redirect(['controller'=>'users', 'action' => 'login']);
+            }
+            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+        }
+        $this->set(compact('user'));
     }
 
     public function verify_setup(){
@@ -167,7 +208,7 @@ class UsersController extends AppController
 
             // check if first_pay_period_date is set
 
-        // redirect
+        // return True or Redirect to Finish Setup
 
     }
 }

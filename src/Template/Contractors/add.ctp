@@ -3,6 +3,9 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Contractor $contractor
  */
+
+$this->assign('title', 'Add Staff');
+
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -15,7 +18,7 @@
     <fieldset>
         <legend><?php echo __('Add Contractor') ?></legend>
         <?php
-            echo $this->Form->control('technician_id',['label'=>'Technician ID', 'type' => 'text']);
+            echo $this->Form->control('technician_id',['label'=>'Technician ID - Amazon ID OR leave blank for auto', 'type' => 'text']);
             echo $this->Form->control('first_name');
             echo $this->Form->control('last_name');
             echo $this->Form->control('email');

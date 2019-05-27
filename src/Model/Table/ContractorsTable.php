@@ -36,6 +36,8 @@ class ContractorsTable extends Table
     {
         parent::initialize($config);
 
+        $this->addBehavior('Timestamp');
+
         $this->setTable('contractors');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
@@ -65,9 +67,12 @@ class ContractorsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->integer('deduction_percentage')
+            ->allowEmpty('id', 'create');
+
+        $validator
             ->scalar('first_name')
-            ->maxLength('first_name', 30)
-            ->allowEmpty('first_name');
+            ->naturalNumber('deduction_percent');
 
         $validator
             ->scalar('last_name')

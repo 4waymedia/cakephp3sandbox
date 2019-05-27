@@ -35,6 +35,8 @@ class BusinessesTable extends Table
     {
         parent::initialize($config);
 
+        $this->addBehavior('Timestamp');
+
         $this->setTable('businesses');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
@@ -42,7 +44,12 @@ class BusinessesTable extends Table
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id'
         ]);
+
         $this->hasMany('PayPeriods', [
+            'foreignKey' => 'business_id'
+        ]);
+
+        $this->hasMany('Contractors', [
             'foreignKey' => 'business_id'
         ]);
 

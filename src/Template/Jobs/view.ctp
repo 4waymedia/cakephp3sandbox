@@ -16,7 +16,7 @@
     </ul>
 </nav>
 <div class="jobs view large-9 medium-8 columns content">
-    <h3><?php echo h($job->id); ?></h3>
+
     <table class="vertical-table">
         <tr>
             <th scope="row"><?php echo __('Job Id'); ?></th>
@@ -115,5 +115,39 @@
             <td><?php echo h($job->appointment_end_time); ?></td>
         </tr>
     </table>
+
+    <div class="related">
+        <h4><?php echo __('Payment File') ?></h4>
+        <?php if (!empty($job->payments)): ?>
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <th scope="col"><?php echo __('Transaction Type') ?></th>
+                    <th scope="col"><?php echo __('Payment Type') ?></th>
+                    <th scope="col"><?php echo __('Quantity') ?></th>
+                    <th scope="col"><?php echo __('Amount') ?></th>
+                    <th scope="col"><?php echo __('Total Product Charges') ?></th>
+                    <th scope="col"><?php echo __('Total Promotional Rebates') ?></th>
+                    <th scope="col"><?php echo __('Amazon Fees') ?></th>
+                    <th scope="col" class="actions"><?php echo __('Actions') ?></th>
+                </tr>
+                <?php foreach ($job->payments as $payment):
+                    ?>
+                    <tr>
+                        <td><?php echo h($payment->transaction_type) ?></td>
+                        <td><?php echo h($payment->payment_type) ?></td>
+                        <td><?php echo h($payment->quantity) ?></td>
+                        <td><?php echo h($payment->amount) ?></td>
+                        <td><?php echo h($payment->total_product_charges) ?></td>
+                        <td><?php echo h($payment->total_promotional_rebates) ?></td>
+                        <td><?php echo h($payment->amazon_fees) ?></td>
+                        <td class="actions">
+                            <?php echo $this->Html->link(__('View'), ['controller' => 'Payments', 'action' => 'view', $payment->id]) ?>
+
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        <?php endif; ?>
+    </div>
 
 </div>

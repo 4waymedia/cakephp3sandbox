@@ -16,7 +16,7 @@ use Cake\I18n\Time;
 class TlhtController extends AppController
 {
     public $paginate = [
-        'limit' => 50,
+        'limit' => 100,
         'order' => [
             'appointment_date' => 'DESC'
         ]
@@ -53,21 +53,24 @@ class TlhtController extends AppController
     {
         $this->loadModel('Jobs');
 
-        if($this->request->getParam('pass'))
-        {
-            $this->paginate['condition'] = [
-
-            ];
-        }
-
         $business_id = $this->Auth->user('business_id');
 
-        $payPeriods = $this->Amazon->getCurrentPayPeriod($business_id);
+        $payPeriod = $this->Amazon->getCurrentPayPeriod($business_id);
+
+        if( !$payPeriod || empty($payPeriod) ){
+
+            // Attempt to generate the next pay period
+            $this->Flash->notice(__('You must setup your business Pay Periods before using the Dashboard.'));
+            return $this->redirect(['controller'=>'tlht', 'action'=>'setup']);
+        }
 
         //$passedArgs = $this->request->getParam('pass');
+        $query = $this->Jobs->find()->contain(['Payments','AccountPayments'])
+            ->where(['appointment_date >='=>$payPeriod->start_date->format('Y-m-d')])
+            ->where(['appointment_date <='=>$payPeriod->end_date->format('Y-m-d')]);
 
-        $jobs = $this->Paginator->paginate($this->Jobs->find()->contain(['Payments','AccountPayments']), $this->paginate);
-        $this->set(compact('jobs', 'payPeriods'));
+        $jobs = $this->Paginator->paginate($query, $this->paginate);
+        $this->set(compact('jobs', 'payPeriod'));
 
     }
 
@@ -112,6 +115,14 @@ class TlhtController extends AppController
 
         $this->UserBusinesses = TableRegistry::getTableLocator()->get('BusinessesUsers');
         $this->Businesses = TableRegistry::getTableLocator()->get('Businesses');
+        $this->PayPeriods = TableRegistry::getTableLocator()->get('PayPeriods');
+
+
+        // count PayPeriods
+        $count = $this->PayPeriods->find('all')
+            ->where(['business_id' => $this->Auth->user('business_id')])->count();
+
+        $reset_payperiods = ($count === 0);
 
         $businesses = $this->Businesses->find('all', [
             'conditions' => ['user_id'=>$user_id]
@@ -138,28 +149,33 @@ class TlhtController extends AppController
 
         if ($this->request->is(['patch', 'post', 'put'])) {
 
-
             $businesses = $this->Businesses->patchEntity($businesses, $this->request->getData());
 
             $userBusiness = $this->UserBusinesses->patchEntity($userBusiness, $this->request->getData());
 
             if ($this->Businesses->save($businesses)) {
 
-                if(isset($userBusiness->first_pay_period_date)){
+                $this->request->getSession()->write('Auth.User.business_id', $businesses->id);
+
+                if(isset($userBusiness->first_pay_period_date) && $userBusiness->isDirty('first_pay_period_date')){
                     // Convert to datetime
                     $start_date = \Cake\Database\Type::build('date')->marshal($userBusiness->first_pay_period_date);
 
+                    //
                     $this->Amazon->generateBusinessPayPeriods($userBusiness->business_id, $start_date, true);
+
+                } elseif($count){
+
                 }
                 $this->Flash->success(__('The have created your Business'));
-                $this->redirect(['controller'=>'businesses', 'action'=>'index']);
+                return $this->redirect(['controller'=>'businesses', 'action'=>'index']);
 
             }else{
                 $this->Flash->error(__('The user business could not be saved. Please, try again.'));
             }
         }
 
-        $this->set(compact('businesses','userBusiness'));
+        $this->set(compact('businesses','userBusiness', 'reset_payperiods'));
     }
 
 }

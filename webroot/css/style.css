@@ -394,6 +394,10 @@ table tr:nth-of-type(even) {
     /*background: none; */
 }
 
+tr.updated {
+    background-color: #a0d3e8 !important;
+}
+
 fieldset {
     border: none;
     padding: 1.25rem;

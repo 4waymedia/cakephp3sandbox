@@ -33,6 +33,7 @@ class PaymentsTable extends Table
 
         // Replace Amazone '--' '---' with NULL
         $this->addBehavior('HyphenNull');
+        $this->addBehavior('Timestamp');
 
         $this->setTable('payments');
         $this->setDisplayField('id');
@@ -47,14 +48,15 @@ class PaymentsTable extends Table
 
 
 
-        if(isset($entity->total_product_charges)){
+        if(isset($entity->total_product_charges) or isset($entity->other)){
             // Create Total amount
             $entity->total = (
-                (int)str_replace('$','',$entity->total_product_charges)+
-                (int)str_replace('$','',$entity->amazon_fees)+
-                (int)str_replace('$','',$entity->refund_admin_fee)+
-                (int)str_replace('$','',$entity->refund_referral_fee)+
-                (int)str_replace('$','',$entity->refund_product_charge)
+                (float)str_replace('$','',$entity->total_product_charges)+
+                (float)str_replace('$','',$entity->amazon_fees)+
+                (float)str_replace('$','',$entity->refund_admin_fee)+
+                (float)str_replace('$','',$entity->refund_referral_fee)+
+                (float)str_replace('$','',$entity->refund_product_charge)+
+                (float)str_replace('$','',$entity->other)
             );
         }
     }
